@@ -35,10 +35,10 @@
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
     console.log(FLAG)
-    // if(!FLAG){
-    //     alert("로그인이 필요합니다.");
-    //     window.location.replace("/user/login.html")
-    //     return
+    if(!FLAG){
+         alert("로그인이 필요합니다.");
+         window.location.replace("/user/login.html")
+         return
     }
     // DOM이 아직 로드되지 않았기에 ready 이벤트를 사용해야 한다.
     });

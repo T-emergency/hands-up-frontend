@@ -26,29 +26,13 @@
     <link href="" rel="stylesheet">
     <!-- JS 파일 -->
     <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/community_index.js"></script>
+    <script src="/static/js/free_article.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
     <style>
         .header__menu>ul>li {
             margin: 0 10px;
-        }
-
-        .stady_btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .stady_wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
     </style>
 </head>
@@ -64,14 +48,8 @@
                 <nav class="header__menu">
                     <ul style="color: white;">
                         <li><a href="/goods/index.html">경매</a>
-                            <!-- <ul class="header__menu__dropdown">
-                                <li><a href="/shop-details.html">Shop Details</a></li>
-                                <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="/checkout.html">Check Out</a></li>
-                                <li><a href="/blog-details.html">Blog Details</a></li>
-                            </ul> -->
                         </li>
-                        <li><a href="/community/free_article.html">게시판</a></li>
+                        <li><a href="/board/free_article.html">게시판</a></li>
                         <li><a href="/contact.html">Contact &amp; Feedback</a></li>
                         <li style="margin-right: 0;">
                             <input type="text" class="form-control" placeholder="What do yo u need?">
@@ -97,7 +75,7 @@
         </div>
     </div>
 </header>
-<body id="body" class="" style="background-color: #ffffff;">
+<body id="body" class="" style="background-color: #d7f7c5;">
     <div id="preloder" style="display: none;">+
         <div class="loader" style="display: none;"></div>
     </div>
@@ -114,7 +92,7 @@
                     <ul>
                         <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
                         <li><a href="/goods/index.html">경매장</a></li>
-                        <li><a href="/community/free_article.html">게시판</a></li>
+                        <li><a href="/board/free_article.html">게시판</a></li>
                         <li><a href="/contact.html">Contact & Feedback</a></li>
                         <li class="p-2">
                             <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
@@ -150,7 +128,7 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
-                    <tbody id="post_list">
+                    <tbody id="free_article">
                     </tbody>
                 </table>
                 <div style="display: flex; justify-content: flex-end; ">

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-100">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+  <meta name="generator" content="Hugo 0.104.2" />
+  <title>자유게시판 수정 페이지</title>
+  <!-- css 파일 -->
+  <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
+  <link href="/static/css/base.css?after" rel="stylesheet" />
+  <!-- bootstrap css cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
+
+  <!-- JS 파일 -->
+  <script src="/static/js/board_free_article_put.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  <style>
+    .header__menu>ul>li {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body id="body" class="" style="background-color: #d7f7c5;">
+  <div id="preloder" style="display: none;">
+    <div class="loader" style="display: none;"></div>
+</div>
+<div class="humberger__menu__overlay" style="z-index: 995;"></div>
+<div class="humberger__menu__wrapper" style="z-index: 999;">
+    <div class="humberger__menu__widget">
+        <div class="header__top__right__auth">
+            <a href="#"><i class="fa fa-user"></i> Login</a>
+        </div>
+    </div>
+    <div id="mobile-menu-wrap">
+        <div class="slicknav_menu">
+            <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+                <ul>
+                    <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
+                    <li><a href="/goods/index.html">경매장</a></li>
+                    <li><a href="/board/free_article.html">게시판</a></li>
+                    <li><a href="/contact.html">Contact & Feedback</a></li>
+                    <li class="p-2">
+                        <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
+                        <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 작성부분 -->
+<body id="body" class="h-100 text-center" style="background-color: #ffffff;">
+    <div class="w-100 h-100 p-3 mx-auto">
+      <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
+        <div class="contain">
+          <div class="fixed-top" id="main_nav">
+            <h3 class="float-md-start mb-0">
+              <a href="/">
+              </a>
+            </h3>
+
+          </div>
+        </div>
+  
+      </header>
+  
+      <main class="container" style="height: 500px; margin-top : 120px;">
+  
+        <div class="row">
+          <h1 class='subject mb-5'>게시글 작성</h1>
+          <form>
+
+            <div class="mb-3" id="post-title">
+
+            </div>
+
+
+            <div class="mb-3">
+              <label for="formFile" class="form-label"></label>
+              <input class="form-control" type="file" id="img" name="img" >
+            </div>
+  
+            <div class="mb-3" id="post-content">
+            </div>
+
+            <div>
+              <button type="button" onclick="free_article_put()" class="btn btn-primary btn-lg" style="background-color: #00b395; margin-left: 90%;">등록하기</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="/static/js/user.js"></script>
+
+</body>
+
+</html>

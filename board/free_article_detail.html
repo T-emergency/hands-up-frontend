@@ -26,7 +26,6 @@
   <link href="" rel="stylesheet">
   <!-- JS 파일 -->
   <script src="/static/js/bootstrap.bundle.min.js"></script>
-  <script src="/static/js/community_index.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
@@ -34,13 +33,12 @@
   
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
-    console.log(FLAG)
     if(!FLAG){
         alert("로그인이 필요합니다.");
         window.location.replace("/user/login.html")
         return
     }
-    // DOM이 아직 로드되지 않았기에 ready 이벤트를 사용해야 한다.
+
     });
     </script>
 ​
@@ -48,50 +46,10 @@
     .header__menu>ul>li {
             margin: 0 10px;
         }
-    /* .stady_btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-​
-    .stady_wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-​
-    .cam_size {
-      width: 375px;
-      height: 375px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: #e9ecef;
-      margin-bottom: 10px;
-    }
-​ */
-    /* .nav_logo {
-      width: 100px;
-      height: 40px;
-    }
-​
-​
-    #main_nav {
-      padding-top: 0.5rem;
-      background-color: #eaeaea;
-      width: 100%;
-      margin: 0 auto;
-    } */
     </style>
     
 </head>
-<body id="body" class="" style="background-color: #ffffff;">
+<body id="body" class="" style="background-color:#d7f7c5;">
   <div id="preloder" style="display: none;">
       <div class="loader" style="display: none;"></div>
   </div>
@@ -108,7 +66,7 @@
                   <ul>
                       <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
                       <li><a href="/goods/index.html">경매장</a></li>
-                      <li><a href="/community/free_article.html">게시판</a></li>
+                      <li><a href="/board/free_article.html">게시판</a></li>
                       <li><a href="/contact.html">Contact & Feedback</a></li>
                       <li class="p-2">
                           <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
@@ -119,7 +77,6 @@
           </div>
       </div>
   </div>
-  <haed>
 <header class="header" style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: fixed; z-index: 99; width: 100%; color: white;">
         <div class="container">
             <div class="row">
@@ -132,14 +89,8 @@
                     <nav class="header__menu">
                         <ul style="color: white;">
                             <li><a href="/goods/index.html">경매</a>
-                                <!-- <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul> -->
                             </li>
-                            <li><a href="/community/free_article.html">게시판</a></li>
+                            <li><a href="/board/free_article.html">게시판</a></li>
                             <li><a href="/contact.html">Contact &amp; Feedback</a></li>
                             <li style="margin-right: 0;">
                                 <input type="text" class="form-control" placeholder="What do yo u need?">
@@ -173,17 +124,13 @@
       </header>
   
       <main class="container" style="height: 900px; margin-top : 90px;">
-​
+
         <!-- 제목 -->
           <h1 class='contents' style="text-align :left; font-size: 45px; background-color: #ffffff;" id="title"> </h1>
         <!-- 작성자 -->
           <div style="display: flex; text-align: right; margin-top: 150px;" >
             <h3 class='contents' style="text-align :right; font-size: 15px;" id="user">작성자 </h1>
           </div>
-        <!-- 게시글 조회수 댓글수 좋아요수 -->
-        <div style="text-align: right; display: flex;" >
-            <h1 class='contents' style="text-align :right; font-size: 12px;" id="hits">조회수 </h1>
-        </div>
         <!-- line -->
         <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">
         <!-- content -->
@@ -195,10 +142,10 @@
           
         </div>
         
-​
-​
-​
-​
+
+
+
+
               <!-- 게시글 옵션 -->
               <div class="mb-3" style="margin-top: 20px;">
                 <div style="margin-left: 70%;">
@@ -208,11 +155,11 @@
               <!-- 구분선 -->
               <hr style="margin-top: 50px; background-color: #00b395; height: 5px;">
               <div id="test">
-​
-​
+
+
               <!-- 댓글 리스트 -->
               <div id="comment_list" style="margin-top: 30px;"></div>
-​
+
               <!-- 댓글 페이지네이션 -->
               <nav aria-label="Page navigation example" style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
                 <ul class="pagination">
@@ -238,7 +185,6 @@
       </main>
     </div>
     <script src="/static/js/user.js"></script>
-​
+
 </body>
-​
 </html>

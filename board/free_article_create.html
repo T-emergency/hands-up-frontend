@@ -11,8 +11,6 @@
   <!-- css 파일 -->
   <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
   <link href="/static/css/base.css?after" rel="stylesheet" />
-  <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
-  <link href="/static/css/base.css?after" rel="stylesheet" />
   <link rel="stylesheet" href="/static/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/css/elegant-icons.css">
   <link rel="stylesheet" href="/static/css/nice-select.css">
@@ -26,10 +24,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
 
   <!-- JS 파일 -->
-  <script src="/static/js/bootstrap.bundle.min.js?after"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="/static/js/bootstrap.bundle.min.js"></script>
-  <script src="/static/js/community_index.js"></script>
+  <script src="/static/js/free_article_create.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
@@ -44,36 +40,9 @@
       .article_create {
          font-size:large;
       }
-    /* .stady_btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-​
-    .stady_wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-​
-    .cam_size {
-      width: 375px;
-      height: 375px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: #e9ecef;
-      margin-bottom: 10px;
-    } */
     </style>
 </head>
-<body id="body" class="" style="background-color:#ffffff">
+<body id="body" class="" style="background-color:#d7f7c5;">
   <div id="preloder" style="display: none;">
       <div class="loader" style="display: none;"></div>
   </div>
@@ -113,12 +82,6 @@
                     <nav class="header__menu">
                         <ul style="color: white;">
                             <li><a href="/goods/index.html">경매</a>
-                                <!-- <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul> -->
                             </li>
                             <li><a href="/board/free_article.html">게시판</a></li>
                             <li><a href="/contact.html">Contact &amp; Feedback</a></li>
@@ -147,7 +110,7 @@
         </div>
  </header>
 <!-- 작성부분 -->
-<body id="body" class="h-100 text-center" style="background-color: #ffffff;">
+<body id="body" class="h-100 text-center" style="background-color: #d7f7c5;">
   <div class="w-100 h-100 p-3 mx-auto">
     <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
       <div class="contain">
@@ -181,18 +144,13 @@
             <input class="form-control" type="file" id="img" name="img" >
           </div>
 
-
-
           <div class="mb-2">
             <label for="exampleFormControlTextarea1" class="form-labe2"></label>
             <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자' name='content' rows="12"required></textarea>
           </div>
-
-          <!-- 등록하기 onclick에 js함수 넣어주기-->
-          <!-- 등록버튼을 누르면 작성한 부분이 리스트로 올라가고, 리스트를 보여주기.-->
           <div style="display:flex;">
-            <button type="button" onclick="" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
-            <button type="button" onclick="" class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
+            <button type="button" onclick="free_article_create()" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
+            <button type="button" onclick="window.location.href='/board/free_article.html'" class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
           </div>
          </form>
       <!-- </div> -->
