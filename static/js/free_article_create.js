@@ -13,7 +13,7 @@
         const formFile = $("#img")[0];
         if (formFile.files.length === 0) {
         } else {
-          formData.append("img", formFile.files[0]);
+          formData.append("image", formFile.files[0]);
         }
 
         $.ajax({

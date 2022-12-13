@@ -7,56 +7,108 @@
   <meta name="description" content="" />
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
   <meta name="generator" content="Hugo 0.104.2" />
-  <title>자유게시판 수정 페이지</title>
+  <title>자유게시판 수정페이지</title>
   <!-- css 파일 -->
   <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
   <link href="/static/css/base.css?after" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/elegant-icons.css">
+  <link rel="stylesheet" href="/static/css/nice-select.css">
+  <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/static/css/slicknav.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <!-- bootstrap css cdn -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
 
   <!-- JS 파일 -->
-  <script src="/static/js/board_free_article_put.js"></script>
+  <script src="/static/js/free_article_put.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 
   <style>
     .header__menu>ul>li {
             margin: 0 10px;
         }
+    .article_create {
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+        }
+    .article_create {
+         font-size:large;
+        }
     </style>
 </head>
-
-<body id="body" class="" style="background-color: #d7f7c5;">
+<body id="body" class="" style="background-color:#d7f7c5;">
   <div id="preloder" style="display: none;">
-    <div class="loader" style="display: none;"></div>
-</div>
-<div class="humberger__menu__overlay" style="z-index: 995;"></div>
-<div class="humberger__menu__wrapper" style="z-index: 999;">
-    <div class="humberger__menu__widget">
-        <div class="header__top__right__auth">
-            <a href="#"><i class="fa fa-user"></i> Login</a>
+      <div class="loader" style="display: none;"></div>
+  </div>
+  <div class="humberger__menu__overlay" style="z-index: 995;"></div>
+  <div class="humberger__menu__wrapper" style="z-index: 999;">
+      <div class="humberger__menu__widget">
+          <div class="header__top__right__auth">
+              <a href="#"><i class="fa fa-user"></i> Login</a>
+          </div>
+      </div>
+      <div id="mobile-menu-wrap">
+          <div class="slicknav_menu">
+              <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+                  <ul>
+                      <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
+                      <li><a href="/goods/index.html">경매장</a></li>
+                      <li><a href="/board/free_article.html">게시판</a></li>
+                      <li><a href="/contact.html">Contact & Feedback</a></li>
+                      <li class="p-2">
+                          <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
+                          <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </div>
+ <header class="header" style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: sticky; z-index: 99; width: 100%; color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
+                    </div>
+                </div>
+                <div class="col-lg-8" style="padding: 0;">
+                    <nav class="header__menu">
+                        <ul style="color: white;">
+                            <li><a href="/goods/index.html">경매</a>
+                            </li>
+                            <li><a href="/board/free_article.html">게시판</a></li>
+                            <li><a href="/contact.html">Contact &amp; Feedback</a></li>
+                            <li style="margin-right: 0;">
+                                <input type="text" class="form-control" placeholder="What do yo u need?">
+                            </li>
+                            <li style="margin: 0;" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-user"></i></a></li>
+                            <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
+                            <i class="fas fa-heart" style="color: black;"></i>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
-    </div>
-    <div id="mobile-menu-wrap">
-        <div class="slicknav_menu">
-            <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                <ul>
-                    <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                    <li><a href="/goods/index.html">경매장</a></li>
-                    <li><a href="/board/free_article.html">게시판</a></li>
-                    <li><a href="/contact.html">Contact & Feedback</a></li>
-                    <li class="p-2">
-                        <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                        <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>
-
-
-
+ </header>
 <!-- 작성부분 -->
 <body id="body" class="h-100 text-center" style="background-color: #ffffff;">
     <div class="w-100 h-100 p-3 mx-auto">
@@ -75,32 +127,28 @@
   
       <main class="container" style="height: 500px; margin-top : 120px;">
   
-        <div class="row">
-          <h1 class='subject mb-5'>게시글 작성</h1>
+          <h4 class='subject mb-5'>게시글 작성</h4>
           <form>
-
-            <div class="mb-3" id="post-title">
-
-            </div>
-
-
             <div class="mb-3">
-              <label for="formFile" class="form-label"></label>
-              <input class="form-control" type="file" id="img" name="img" >
+                <label for="exampleFormControlInput1" class="form-label"></label>
+                <input type="text" class="form-control" id="free_article_title" name='title' type="required" value="">
             </div>
-  
-            <div class="mb-3" id="post-content">
+            <div class="mb-1">
+                <label for="formFile" class="form-label"></label>
+                <input class="form-control" type="file" id="image" name="image">
             </div>
-
-            <div>
-              <button type="button" onclick="free_article_put()" class="btn btn-primary btn-lg" style="background-color: #00b395; margin-left: 90%;">등록하기</button>
+            <div class = "mb-2">
+                <label for="exampleFormControlTextarea1" class="form-labe2"></label>
+              <textarea class="form-control" id="free_article_content" name='free_article_content' rows="12"required></textarea>
             </div>
+            <div style="display:flex;">
+                <button type="button" onclick="free_article_put()" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">수정하기</button>
+                <button type="button" onclick="window.location.href='/board/free_article.html'" class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
+              </div>
           </form>
-        </div>
       </main>
     </div>
     <script src="/static/js/user.js"></script>
 
 </body>
-
 </html>
