@@ -1,56 +1,33 @@
-// url :  .html/?goods=123
+const goodsId = url.searchParams.get('goods');
+const backUrl = '127.0.0.1:8000'
+const token = localStorage.getItem('access')
+var goods = JSON.parse(localStorage.getItem('goods', ''))
 
-// localStorage 
-// h = loaS.get(handsup)
+if (!goods){
+    goods = {}
+}
 
-// goods_id = 쿼리파라미터['goods_id']
-// h[`goods_${goods_id}`]
-// hands {
-//     goods_123 : {
-//         goods_id : 55,
-//         변하는 데이터2 : 5,
-//         변하는 데이터2 : 5,
-//         변하는 데이터2 : 5,
-//         변하는 데이터2 : 5,
-//     },
-//     goods_133 : {
-//         변하는 데이터 : 12,
-//         변하는 데이터2 : 33,
-//     },
-//     goods_135 : {
-//         변하는 데이터 : 12,
-//         변하는 데이터2 : 33,
-//     },
-//     goods_35 : {
-//         변하는 데이터 : 12,
-//         변하는 데이터2 : 33,
-//     }
-// }
-
-var highPrice = HANDSUP['high_price']; // 최고가가 아직 없다면 ? 지정한 최저가가 될 것 => 삼항문자 
-var goodsId = HANDSUP['goods_id'];
-var backUrl = '127.0.0.1:8000'
-var backEndUrl = 'http://127.0.0.1:8000'
-var token = localStorage.getItem('access')
-
-
+if (Object.keys(goods).length > 9){
+    goods = {}
+}
 
 async function goodsInfoView() {
     let data = await goodsInfoApi()
     let seller = data['seller']
-    let images = data['goodsimage_set']
-    let nowPrice = highPrice === 0 ? data['start_price'] : highPrice
+    var hp = priceToString(data['high_price'])
+    var sp = priceToString(data['start_price'])
+    // let images = data['images']
+    let nowPrice = !data['high_price'] ? sp : hp
+
     let ratingScore = data['seller']['rating_score']
     let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(ratingScore / 25)]
-    console.log(data)
-    console.log(nowPrice, ratingScore, ratingColor)
-
+ 
     // 사진 섹션
     var temp = ``
     for (var i = 0; i < data['images'].length; i++) {
         temp += `
         <div class="swiper-slide">
-            <img style="box-shadow: 0 2px 5px 0px; border-radius:10px" src="${backEndUrl}${data['images'][i]['image']}" alt="상품이미지"/>
+            <img style="box-shadow: 0 2px 5px 0px; border-radius:10px" src="${hostUrl}${data['images'][i]['image']}" alt="상품이미지"/>
         </div>
     `
     }
@@ -79,8 +56,8 @@ async function goodsInfoView() {
     });
     // 사용자 정보 섹션
     var temp = `
-        <div class = "p-3 card mb-3" style= "background-color : #2c2c2c; border-radius : 10px; color : white;">
-            <div class = "row" onclick="console.log('프로필로이동하장')">
+        <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black; cursor:pointer;">
+            <div class = "row" onclick="window.location.href='/review/index.html?user_id=${seller['id']}'">
                 <div class = "col-2">
                     <img style="border-radius:50%;" src="${seller['profile_image']}" alt="img">
                 </div>
@@ -98,13 +75,13 @@ async function goodsInfoView() {
     document.getElementById('seller-info-wrap').innerHTML = temp
     // 판매자 예상 가치 섹션
     var temp = `
-        <div class = "p-3 card mb-3" style="background-color : #2c2c2c; color:white; border-radius:10px;">
+        <div class = "p-3 card mb-3" style="background-color : white; color:black; border-radius:10px;">
             <div class ="row">
                 <span class="col-6" style="font-weight : 600;">
                     판매자 예상 가치 :                        
                 </span>
                 <span class="text-end col-6" style="font-weight : 700">
-                    ${data['predict_price']} 원 
+                    ${priceToString(data['predict_price'])} 원 
                 </span>
             </div>
         </div>
@@ -112,10 +89,10 @@ async function goodsInfoView() {
     document.getElementById('predict-price-wrap').innerHTML = temp
 
     // 물건 정보 섹션
-    var time = data["created_at"].slice(undefined,-7)
+    var time = data["created_at"].slice(undefined, -7)
     var temp = `
-        <div class = "p-3 card mb-3" style="background-color : #2c2c2c; color:white; border-radius:10px;">
-            <h3 style="color:white; font-weight:600;">${data['title']}</h3>
+        <div class = "p-3 card mb-3" style="background-color : white; color:black; border-radius:10px;">
+            <h3 style="font-weight:600;">${data['title']}</h3>
                             
             <div class="small">카테고리 : ${data['category']}, <span style="font-size:14px"><time class="timeago" datetime="${time}"></time></span></div>
             <div class="card-body" style="font-weight:600">${data['content']}</div>
@@ -123,31 +100,41 @@ async function goodsInfoView() {
     `
     document.getElementById('goods-info-wrap').innerHTML = temp
     $("time.timeago").timeago();
-    
+
     await goodsStatusView(data)
 
-    
+
 }
 
 
 async function goodsInfoApi() {
-    const response = await fetch(`${backEndUrl}/goods/${goodsId}/`, {
+
+    const response = await fetch(`${hostUrl}/goods/${goodsId}/`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token,
+            // 'Authorization': 'Bearer ' + token,
         }
     })
     response_json = await response.json()
     if (response.status == 200) {
-        HANDSUP['high_price'] = response_json['high_price'] === 0? response_json['start_price'] : response_json['high_price']
-        HANDSUP['seller_id'] = response_json['seller']['id']
-        HANDSUP['buyer_id'] = response_json['buyer']?.id
-        localStorage.setItem('handsup', JSON.stringify(HANDSUP))
+
+        if (!goods){
+            localStorage.setItem('goods', JSON.stringify({}))
+            goods = JSON.parse(localStorage.getItem('goods'))
+        }
+
+        goods[goodsId] = 
+            {
+            "seller_id" : response_json['seller']['id'],
+            "buyer_id" : response_json['buyer']?.id
+        }
+        localStorage.setItem('goods', JSON.stringify(goods))
+
         return response_json
     }
     else if (response.status == 400) {
-        console.log(response_json)
+        alert('올바르지 않은 접근')
     }
 }
 
@@ -161,9 +148,12 @@ async function goodsStatusView(data) {
     let totalSecond = 20 * 60 - time2
     if (status === true) {
         await startTimer(totalSecond)
-
+        var hp = priceToString(data['high_price'])
+        var sp = priceToString(data['start_price'])
         if (data['buyer'] !== null) {
             let buyer = data['buyer']
+            
+            console.log(data)
             //사진으로 해야하는지 의문
             document.getElementById('high-price').innerHTML = `
             <div class="p-3 text-center mb-3">
@@ -173,27 +163,29 @@ async function goodsStatusView(data) {
                         현재 최고가
                     </div>
                     <div style = "font-wetight : 600">
-                        <b style = "font-size:22px">${data['high_price']}</b> <span class = "text-secondary">원</span>
+                        <b id="price" style = "font-size:22px">${hp}</b> <span class = "text-secondary">원</span>
                     </div>
                 </div>
                 <div class = "card p-2 mb-3" style="box-shadow: 0 2px 5px 0px;">
                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-                    <div class="" style="font-size:25px; font-weight : 700;" onclick="console.log('프로필로 가장')">
+                    <div class="" style="font-size:25px; font-weight : 700; cursor:pointer;" onclick="window.location.href='/review/index.html?user_id=${buyer['id']}'">
                         ${buyer['username']}
                     </div>
                 </div>
             </div>
             `
         } else {
+            console.log(data)
+
             document.getElementById('high-price').innerHTML = `
             <div class="p-3 text-center card mb-3" style="box-shadow: 0 2px 5px 0px;">
                 <div style="font-weight : 500">과연 첫 번째 오너는?</div>
-                <span style="font-weight:600;">시작가 <span style="font-size:24px; font-weight : 700;">${data['start_price']}</span> 원</span>
+                <span style="font-weight:600;">시작가 <span id="price" style="font-size:24px; font-weight : 700;">${sp}</span> 원</span>
             </div>
             `
         }
     } else if (status === false) { // 가림막 보이게 하고 낙찰자이름 가격 보이게 하기?
-        var buyer = data['buyer'] === null? '낙찰자가 없습니다.' : data['buyer']['username']
+        var buyer = data['buyer'] === null ? '낙찰자가 없습니다.' : data['buyer']['username']
         $('#auction-wrap').empty()
         var temp = `
         <div id="auction-before-message" class = "text-center">
@@ -215,14 +207,12 @@ async function goodsStatusView(data) {
             <div style="font-size : 25px; font-weight:600;">${data['start_date']} ${data['start_time']}:00</div>
             <div  style='padding:15px 44% 0; color:white; font-size: 25px; font-weight : 500;'>오너 될 준비, 되셨나요 ??</div>
         </div>
-        
         `
         $('#auction-wrap').html(temp)
     }
 }
 
 async function startTimer(time) {
-    console.log('dd')
     let totalSecond = time
 
     let x = setInterval(function () {
@@ -230,7 +220,6 @@ async function startTimer(time) {
         let sec = totalSecond % 60
         let perTime = totalSecond / (60 * 20) * 100
         let percolor = perTime <= 10 ? 'red' : ['yellow', 'blue', 'purple'][parseInt(perTime / 40)]
-        console.log(percolor)
         document.getElementById('center-timer').innerHTML = min + "분" + sec + "초";
         $('.pie-timer').css({
             "background": "conic-gradient(" + percolor + " 0% " + perTime + "%, #ffffff " + perTime + "% 100%)"
@@ -246,33 +235,40 @@ async function startTimer(time) {
 
 goodsInfoView()
 
-let chatSocket = new WebSocket(
-    `ws://${backUrl}/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
-);
+
+if (token !== null){
+    var chatSocket = new WebSocket(
+        `ws://${backUrl}/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
+    );
+}else{
+    var chatSocket = new WebSocket(
+        `ws://${backUrl}/auction/${goodsId}/`
+    );
+}
+
 
 chatSocket.onopen = (e) => {
     console.log('connect')
 }
 
-chatSocket.onmessage = function (e) {
+chatSocket.onmessage = async function (e) {
     var data = JSON.parse(e.data);
     var message = data['message'];
     var responseType = data['response_type'];
-    console.log(responseType)
     var element = document.getElementById('chat-wrap');
     var isEnd = element.scrollHeight <= element.scrollTop + element.clientHeight + 3;
 
-    if (responseType === 'alert'){
+    if (responseType === 'alert') {
         alert(data['message'])
         return
     }
 
     if (responseType === 'bid') {
-        var highPrice = data['high_price']
-        HANDSUP['high_price'] = highPrice
-        HANDSUP['buyer_id'] = data['sender']
+        // var highPrice = data['high_price']
+        // goods[goodsId]['high_price'] = highPrice
+        goods[goodsId]['buyer_id'] = data['sender']
 
-        localStorage.setItem('handsup', JSON.stringify(HANDSUP));
+        localStorage.setItem('goods', JSON.stringify(goods));
 
 
         var temp = `
@@ -283,12 +279,12 @@ chatSocket.onmessage = function (e) {
                         현재 최고가
                     </div>
                     <div style = "font-wetight : 600">
-                        <b style = "font-size:22px">${data['high_price']}</b> <span class = "text-secondary">원</span>
+                        <b id="price" style = "font-size:22px">${priceToString(data['high_price'])}</b> <span class = "text-secondary">원</span>
                     </div>
                 </div>
                 <div class = "card p-2 mb-3">
                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-                    <div class="" style="font-size:25px;" onclick="console.log('프로필로 가장')">
+                    <div class="" style="font-size:25px;" onclick="window.location.href='/review/index.html?$user_id=${data['sender']}'">
                         ${data['sender_name']}
                     </div>
                 </div>
@@ -303,7 +299,7 @@ chatSocket.onmessage = function (e) {
                     <b style = "font-size : 20px">${data['sender_name']}</b>
                 </div>
                 <div style = "margin-left : 20px; width: 80%; font-size : 20px; border-radius : 8px; background-color : hotpink; padding : 5px; margin-bottom : 10px;">
-                    ${data['high_price']} 원 입찰!!
+                    ${priceToString(data['high_price'])} 원 입찰!!
                 </div>
             </div>
         `
@@ -311,8 +307,8 @@ chatSocket.onmessage = function (e) {
         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
 
     } else if (responseType === 'message') {
-        var nowOner = HANDSUP['buyer_id']
-        var seller = HANDSUP['seller_id']
+        var nowOner = goods[goodsId]['buyer_id']
+        var seller = goods[goodsId]['seller_id']
         if (seller === data['sender']){
             var temp = `
             <div>
@@ -320,24 +316,24 @@ chatSocket.onmessage = function (e) {
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
                     <b style = "font-size : 20px">${data['sender_name']} (판매자)</b> <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #ffcfcf; padding : 5px; margin-bottom : 10px;">
                     ${data['message']}
                 </div>
             </div>
         `
-        } else if ( nowOner === data['sender']){
+        } else if (nowOner === data['sender']) {
             var temp = `
             <div>
                 <div>
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
-                    <b style = "font-size : 20px">${data['sender_name']} </b> (현재 최고가 입찰자) <span style="font-color : gray; font-size:small;">${data['time']}</span>
+                    <b style = "font-size : 20px">${data['sender_name']} </b> (현재 오너) <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #dfcfff; padding : 5px; margin-bottom : 10px;">
                     ${data['message']}
                 </div>
             </div>
         `
-        }else{
+        } else {
             var temp = `
             <div>
                 <div>
@@ -350,12 +346,10 @@ chatSocket.onmessage = function (e) {
             </div>
         `
         }
-        
+
         // beforeend afterbegin beforebegin afterend
         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
     } else if( responseType === 'enter'){
-        HANDSUP['participants_count'] = data['participants_count']
-        localStorage.setItem('handsup', JSON.stringify(HANDSUP))
         var temp = `
             <div>
                 <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
@@ -367,8 +361,6 @@ chatSocket.onmessage = function (e) {
         document.getElementById('participants-count').innerText = '참여 인원 : '+data['participants_count']
         
     } else if(responseType === 'out'){
-        HANDSUP['participants_count'] = data['participants_count']
-        localStorage.setItem('handsup', JSON.stringify(HANDSUP))
         document.getElementById('participants-count').innerText = '참여 인원 : '+data['participants_count']
 
 
@@ -399,7 +391,14 @@ function sendMessage() {
     if (message === '') {
         return
     }
-    // console.log(HANDSUP, payload)
+    if(!payload || !token){
+        if(!confirm('로그인 후 이용가능합니다. 로그인하러 갈까요?')){
+            return    
+        }
+        window.location.href ='/user/login.html'
+        return
+    }
+    // console.log(goods, payload)
     if (chatSocket.readyState === WebSocket.OPEN) {
         chatSocket.send(JSON.stringify({
             'is_money': false,
@@ -414,18 +413,35 @@ function sendMessage() {
 };
 
 function sendMoney() {
+    if(!confirm('정말 입찰 하시겠습니까?')){
+        return   
+    }
     var messageInputDom = document.querySelector('#chat-money-input');
+    var highPrice = document.getElementById('price').innerText;
     var message = messageInputDom.value;
-    console.log(highPrice)
-    // console.log(HANDSUP, payload)
+    const reg1 = /^[0-9]+$/;
+    highPrice = highPrice.replace(/,/g,"");
+
+
+    if (message === '' || !reg1.test(highPrice) || !reg1.test(message)) {
+        return alert('값을 바르게 입력해 주세요.')
+    }
+    if(!payload || !token){
+        if(!confirm('로그인 후 이용가능합니다. 로그인하러 갈까요?')){
+            return    
+        }
+        window.location.href ='/user/login.html'
+        return
+    }
+
+
     if (chatSocket.readyState === WebSocket.OPEN) {
 
         money = Number(message)
-        console.log(money, typeof (money))
         // money === NaN이 안먹힌다.
         if (String(money) == 'NaN') {
             return alert('숫자를 입력해 주세요.')
-        } else if (highPrice >= parseInt(money)) {
+        } else if (Number(highPrice) >= parseInt(money)) {
             return alert('현재가 보다 낮은 가격입니다.')
         } else {
             chatSocket.send(JSON.stringify({

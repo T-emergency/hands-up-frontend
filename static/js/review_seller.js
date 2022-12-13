@@ -3,9 +3,7 @@ $(document).ready(function(){
 });
 
 function selectScore(score_1){
-   console.log(score_1)
    const score = score_1;
-   console.log(score)
 
    if(score==-20){
        let temp_bad = `
@@ -236,41 +234,44 @@ function selectScore(score_1){
 //     })
 // }
 
+let user_id = url.searchParams.get('user_id')
 
-// 댓글
+
 function reviewCreate() {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyMzUxMzUxLCJpYXQiOjE2NzA1NTEzNTEsImp0aSI6IjAxMjM0YTkxYjFiZTQwNWM4MzMyMGJlZWQyYmJkMThhIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiIxMjMiLCJwaG9uZSI6IjEifQ.SR-l_ePuwgYxeSmlRx_-segvGNJ2FUyn2Df1WdtEVPk'
 
    let content = $("#content").val()
    let score= $("input[type=checkbox]:checked").val()
    let formData = new FormData();
    formData.append("content",content);
-   console.log("content",content)
-   console.log("score",score)
-   console.log(formData)
+   formData.append("score",score);
 
    $.ajax({
        
        type: "POST",
-       url: `http://127.0.0.1:8000/review/5/`,
+       url: `http://127.0.0.1:8000/review/${user_id}/`,
        processData: false,
        contentType: false,
        data: formData,
        
        headers: {
-        "Authorization": "Bearer " + accessToken,
+        "Authorization": "Bearer " + localStorage.getItem("access"),
     },
 
        success: function () {
            location.reload()
        },
-       error : function(){
-       if(score==undefined){
+       error : function(response){
+        console.log(response)
+       if(score===undefined){
        alert("상대방과 거래가 어땠는지 선택해주세요");
-       }else if(content==''){
-       alert("내용을 입력해주세요. 최대 50자");
-
+       }else if(content===''){
+       alert("내용을 입력해주세요. 최대 30자");
        }
+        else if(response.status === 409){
+        alert("이미 평가 했습니다.");
+        }else{
+        alert("글자수 초과");
+        }
    
        }
 

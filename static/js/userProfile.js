@@ -19,6 +19,7 @@ function sellgoods() {
         data: {},
 
         success: function (response) {
+            console.log(response['sell_goods'])
             console.log(response['user_data']['profile_image'])
             let user_image = response['user_data']['profile_image']
             console.log(response['user_data']['username'])
@@ -33,9 +34,10 @@ function sellgoods() {
 
                             $('#userdata').append(temp_profile)
 
-            console.log(response['sell_goods'].length)
+            // console.log(response['sell_goods'][0]['images'].length)
             for(let i =0 ; i < response['sell_goods'].length; i++){
-                if (response['sell_goods'][i]['images'].length > 0){
+                if (response['sell_goods'][i]['images']<0 ){
+                    console.log(response['sell_goods'][i]['images'][0])
                     let images = response['sell_goods'][i]['images'][0]
                     let title = response['sell_goods'][i]['title']
                     let predict_price = response['sell_goods'][i]['predict_price']
@@ -59,22 +61,23 @@ function sellgoods() {
 
                 }else{
                     let images = "https://w7.pngwing.com/pngs/703/554/png-transparent-camera-graphy-free-content-camera-camera-lens-rectangle-black.png"
+                    console.log(response['sell_goods'][i]['title'])
                     let title = response['sell_goods'][i]['title']
                     let predict_price = response['sell_goods'][i]['predict_price']
                     let start_price = response['sell_goods'][i]['star_price']
 
                     let temp_html = `
-                    <div id="item" class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
+                    <a href="#"><div id="item" class="goodsItem col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg"
-                            style="background-image: url(${images}); background-size: cover;">
+                            style="background-image: url(${images}); background-size: cover;" >
                         </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">${title}</a></h6>
-                                <h5>${predict_price}</h5>
+                            <div class="item-text featured__item__text">
+                                <a href="#"> <h6 style="border-bottom:1px solid gray">${title}<h6> </a>
+                                <a href="#"> <h5 >${predict_price}원</h5></a>
                             </div>
                         </div>
-                    </div>`
+                    </div></a>`
     
                     
                     $('#item').append(temp_html)

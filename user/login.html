@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>STADY</title>
+    <title>핸즈업</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .title-center {
@@ -46,7 +46,8 @@
     <div class="page" style="height: 100%;">
         <div class="p-3">
             <div class="container"
-                style="max-width: 300px; position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); padding: 40px; background-color: white; border-radius: 15px; box-shadow: 7px -5px 10px 0px;">
+                style="max-width: 300px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 40px; background-color: white; border-radius: 15px; box-shadow: 7px -5px 10px 0px;">
+                <h1 class="text-center">👋 핸즈업</h1>
                 <form>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">전화 번호</label>
@@ -56,16 +57,18 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password">
                     </div>
-                    <div class="mb-3 form-check">
+                    <!-- <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="handleLogin()">Submit</button>
+                    </div> -->
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/user/join.html'">회원가입하기</button>
+                    <button type="button" class="btn btn-primary" onclick="handleLogin()">로그인</button>
                 </form>
-                <div class="option">
+                
+                <!-- <div class="option">
                     비밀번호를 잊으셨나요?
                     비밀번호 리셋
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -79,4 +82,12 @@
     <div class="footer">
     </div>
 
+
+    <script>
+        document.querySelector('#password').onkeyup = function (e) {
+            if (e.keyCode === 13) {  // enter, return
+                handleLogin()
+            }
+        };
+    </script>
 </body>

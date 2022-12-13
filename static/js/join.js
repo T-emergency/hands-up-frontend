@@ -70,12 +70,16 @@ $('#username').on('input', usernameChecker);
 
 function phoneChecker(){
     is_auth = false
+    $('#phone-number-wrap').hide()
+
 }
 function authNumberCheker(){
     var authNumber = $('#auth-number').val()
     var phone = $('#phone-number').val()
 
     if(authNumber.length !== 6){
+        $('#auth-success-icon').empty()
+        is_auth = false
         return
     }
 
@@ -138,7 +142,7 @@ async function handleJoin() {
     
     if( !is_auth || !username_check || password1 !== password2){
         !is_auth? $('#phone-message').html('<span class="redfont">인증해 주세요!</span>') : $('#phone-message').html('감사합니다')
-        !username_check? $('#username-message').html('<span class="redfont">중복체크 해주세요!</span>') : $('#phone-message').text('감사합니다')
+        !username_check? $('#username-message').html('<span class="redfont">중복체크 해주세요!</span>') : $('#username-message').text('중복체크 완료')
         // !is_password? $('#password-1-message').html('<span class="redfont">8자 이상 16자 이하 영문, 숫자, 특수문자 하나 이상씩 포함</span>') : $('#username-message').html('<span class="redfont">사용가능한 비밀번호</span>')
         password1 !==password2 || password1 === '' ? $('#password-1-message').html('<span class="redfont">비밀번호를 입력해 주세요.</span>') : is_password = true;
         return false
@@ -159,8 +163,8 @@ async function handleJoin() {
         alert("회원가입 되었습니다.")
         window.location.href = "/user/login.html";
     }else{
-        const response_json = await response.json()
-        (response_json);
+        alert('이미 가입된 번호가 있습니다!')
+        // TODO 로그인하러 가기 비밀번호 초기화하러 가기
     }
 }
 

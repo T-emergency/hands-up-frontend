@@ -43,8 +43,8 @@
                 width:100%;
                 margin: auto;
                 padding-left: 200px;
-                border: 1px solid gray;
-                border-radius: 10px;
+                /* border: 1px solid gray;
+                border-radius: 10px; */
             }
 
             .set-bg{
@@ -86,6 +86,24 @@
             .profile-atag:hover{
                 color:blue;
             }
+
+            .goodsItem{
+                transition: all 0.2s linear;
+                border : 1px solid rgb(250, 206, 206);
+                border-radius: 10px;
+
+            }
+
+            .goodsItem:hover{
+                transform: scale(1.1);
+                border : 1px solid rgb(250, 206, 206);
+                border-radius: 10px;
+            }
+            .item-text{
+                width: 100%;
+                
+                
+            }
         </style>
     </head>
     
@@ -96,112 +114,7 @@
         <div id="preloder" style="display: none;">
             <div class="loader" style="display: none;"></div>
         </div>
-    
-        <!-- Humberger Begin -->
-        <div class="humberger__menu__overlay" style="z-index: 995;"></div>
-        <div class="humberger__menu__wrapper" style="z-index: 999;">
-            <div class="humberger__menu__widget">
-                <div class="header__top__right__auth">
-                    <a href="#"><i class="fa fa-user"></i> Login</a>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap">
-                <div class="slicknav_menu">
-                    <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                        <ul>
-                            <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                            <li><a href="/goods/index.html">경매장</a></li>
-                            <!-- <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
-                            <li><a href="/blog/blog.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact & Feedback</a></li>
-                            <li class="p-2">
-                                    <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                                    <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- <div class="header__top__right__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            </div>
-            <div class="humberger__menu__contact">
-                <ul>
-                    <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                    <li>Free Shipping for all Order of $99</li>
-                </ul>
-            </div> -->
-        </div>
-        <!-- Humberger End -->
-    
-        <!-- Header Section Begin -->
-        <header class="header" style="
-        background: linear-gradient(45deg, #8088ff, #c24aff) !important;
-        position: fixed;
-        z-index: 99;
-        width: 100%;
-        color: white;
-    ">
-        <!-- div container!!!!!!! -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <div class="header__logo">
-                            <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-8" style="padding: 0;">
-                        <nav class="header__menu">
-                            <ul style="color: white;">
-                                <li><a href="/goods/index.html">경매</a>
-                                    <!-- <ul class="header__menu__dropdown">
-                                        <li><a href="/shop-details.html">Shop Details</a></li>
-                                        <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="/checkout.html">Check Out</a></li>
-                                        <li><a href="/blog-details.html">Blog Details</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a href="/blog/blog.html">게시판</a></li>
-                                <li><a href="/contact.html">Contact & Feedback</a></li>
-                                <li style="margin-right: 0;">
-                                    <input type="text" class="form-control" placeholder="What do yo u need?">
-                                </li>
-                                <li style="margin: 0;" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-lg-2">
-    
-                        <div class="header__cart">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user"></i></a></li>
-                                <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                                <i class="fas fa-heart" style="color: black;"></i>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="humberger__open">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </div>
-        </header>
-        <!-- Header Section End -->
-
-  
+        <div id="nav-header"></div>
 
     <!-- Featured Section Begin -->
     <div class="list-wrap">
@@ -221,7 +134,7 @@
                            
                         </div>
                         <!-- 프로필 버튼 -->
-                        <a href="#" class="profile-atag"><div class="profile-bnt">프로필 보기</div></a>
+                        <a href="http://127.0.0.1:5501/review/my_review_profile.html" class="profile-atag"><div class="profile-bnt">프로필 보기</div></a>
                     </div>
                     
                     <div class="featured__controls">
@@ -241,7 +154,7 @@
                 <div class="col-lg-9">
                     <div class="row" id="item" style="margin-top:20px;">
                         
-                        <!-- 데이터 들어가는 곳 -->
+                        <!-- 상품 데이터 들어가는 곳 -->
                     </div>
                         <!-- lists end -->
                     </div>
@@ -267,6 +180,7 @@
     <script src="/static/js/jquery.slicknav.js"></script>
     <script src="/static/js/mixitup.min.js"></script>
     <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/base.js"></script>
     <script src="/static/js/main.js"></script>
     <script src="/static/js/userProfile.js"></script>
 

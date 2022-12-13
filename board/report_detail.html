@@ -18,15 +18,13 @@
   <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/static/css/slicknav.min.css">
   <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="stylesheet" href="/static/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <!-- bootstrap css cdn -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
   <!-- Google Font -->
   <link href="" rel="stylesheet">
   <!-- JS 파일 -->
-  <script src="/static/js/bootstrap.bundle.min.js"></script>
-  <script src="/static/js/community_index.js"></script>
+  <script src="/static/js/report_detail.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
@@ -35,11 +33,11 @@
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
     console.log(FLAG)
-    if(!FLAG){
-         alert("로그인이 필요합니다.");
-         window.location.replace("/user/login.html")
-         return
-    }
+    // if(!FLAG){
+    //     alert("로그인이 필요합니다.");
+    //     window.location.replace("/user/login.html")
+    //     return
+    
     // DOM이 아직 로드되지 않았기에 ready 이벤트를 사용해야 한다.
     });
     </script>
@@ -158,7 +156,7 @@
 
               <!-- 게시글 옵션 -->
               <div class="mb-3" style="margin-top: 20px;">
-                <div style="margin-left: 70%;">
+                <div style="margin-left: 85%;">
                     <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="comment_put_submit()">수정</button>
                     <button id="delete_submit" type="button" class="btn btn-outline-danger" onclick="post_delete_submit()" >삭제</button>
                 </div>

@@ -17,21 +17,17 @@
 
     <title>👋 핸즈업</title>
 
-    <!-- Google Font -->
-    <link href="/static/css/css2" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/css/elegant-icons.css">
+    <!-- <link rel="stylesheet" href="/static/css/elegant-icons.css"> -->
     <link rel="stylesheet" href="/static/css/nice-select.css">
     <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/slicknav.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 
-    <link rel="stylesheet" href="/static/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/static/css/all.min.css"> -->
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- timeago -->
@@ -39,7 +35,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 
 
-    <script src="/static/js/base.js"></script>
 
     <style>
         .pie-timer {
@@ -117,7 +112,8 @@
         #auction-wrap{
             max-height: 650px;
             border-radius: 15px;
-            background: radial-gradient(#c692ff, #fde55d);
+            /* background: radial-gradient(#c692ff, #fde55d); */
+            background: radial-gradient(#c692ff, #222d73);
             box-shadow: 0 4px 8px 1px;
             padding: 15px;
         }
@@ -126,116 +122,13 @@
 </head>
 
 <body style="
-        background-color: #cccccc;
+        background-color: #201e0c;
     " class="">
     <!-- Page Preloder -->
     <div id="preloder" style="display: none;">
         <div class="loader" style="display: none;"></div>
     </div>
-
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay" style="z-index: 995;"></div>
-    <div class="humberger__menu__wrapper" style="z-index: 999;">
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <div id="mobile-menu-wrap">
-            <div class="slicknav_menu">
-                <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                    <ul>
-                        <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                        <li><a href="/goods/index.html">경매장</a></li>
-                        <!-- <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
-                        <li><a href="/blog/blog.html">게시판</a></li>
-                        <li><a href="/contact.html">Contact & Feedback</a></li>
-                        <li class="p-2">
-                            <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                            <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <!-- <div class="header__top__right__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            </div>
-            <div class="humberger__menu__contact">
-                <ul>
-                    <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                    <li>Free Shipping for all Order of $99</li>
-                </ul>
-            </div> -->
-    </div>
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
-    <header class="header" style="
-        background: linear-gradient(45deg, #ffd567, #c24aff) !important;
-        position: sticky;
-        z-index: 99;
-        width: 100%;
-        color: white;
-    ">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
-                    </div>
-                </div>
-                <div class="col-lg-8" style="padding: 0;">
-                    <nav class="header__menu">
-                        <ul style="color: white;">
-                            <li><a href="/goods/index.html">경매</a>
-                                <!-- <ul class="header__menu__dropdown">
-                                        <li><a href="/shop-details.html">Shop Details</a></li>
-                                        <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="/checkout.html">Check Out</a></li>
-                                        <li><a href="/blog-details.html">Blog Details</a></li>
-                                    </ul> -->
-                            </li>
-                            <li><a href="/blog/blog.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact & Feedback</a></li>
-                            <li style="margin-right: 0;">
-                                <input type="text" class="form-control" placeholder="What do yo u need?">
-                            </li>
-                            <li style="margin: 0;" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-2">
-
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i></a></li>
-                            <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                            <i class="fas fa-heart" style="color: black;"></i>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+    <div id="nav-header"></div>
 
 
     <div class="whole-wrap container "
@@ -249,11 +142,6 @@
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper" id="swiper-wrapper">
                               <!-- Slides -->
-                              <div class="swiper-slide">Slide 1</div>
-                              <div class="swiper-slide">Slide 2</div>
-                              <div class="swiper-slide">Slide 3</div>
-                              <div class="swiper-slide">Slide 3</div>
-                              <div class="swiper-slide">Slide 3</div>
                             </div>
                             <!-- If we need pagination -->
                             <div class="swiper-pagination"></div>
@@ -290,7 +178,7 @@
                     <div id="high-price">
             
                     </div>
-                    <input class="form-control mb-2" id="chat-money-input" type="text" placeholder="입찰가를 입력해 주세요!" />
+                    <input class="form-control mb-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="chat-money-input" type="text" style="border: 2px solid gold;" placeholder="입찰가를 입력해 주세요!" />
                     <input class="btn btn-warning form-control" style="box-shadow: 0 1px 2px 0px;" id="chat-message-submit"
                         type="button" onclick="sendMoney()" value="입찰" />
                 </div>
@@ -302,10 +190,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="padding: 10px 0 0 15px;">
-                    <input class="form-control col-9" id="chat-message-input" type="text" />
+                <div class="row" style="padding: 10px 0 0 10px;">
+                    <input style="border: 1px solid #fde55d; border-radius: 10px;" class="col-9" id="chat-message-input" placeholder="채팅에 참여하세요!" type="text" />
                     <div class="col-3">
-                        <input class="btn btn-primary" id="chat-message-submit" type="button" onclick="sendMessage()" value="보내기" />
+                        <input style="border: 1px solid #201e0c; border-radius: 5px; height: 100%; background-color: #cce5ff;" class="" id="chat-message-submit" type="button" onclick="sendMessage()" value="보내기" />
                     </div>
             
                 </div>
@@ -314,439 +202,11 @@
             </div>
         
     </div>
-    <!-- <button onclick="auctionView(15)"></button>
-    <button onclick="auctionView(1)"></button>
-    <button onclick="auctionView(3)"></button> -->
-
+    <script src="/static/js/base.js"></script>
     <script src="/static/js/auction.js"></script>
-    <script>
-        // function auctionView(goodsId){
-        //     HANDSUP['goods_id'] = goodsId
-        //     localStorage.setItem('handsup', JSON.stringify(HANDSUP));
-            
-        // }
-        // // 로드시 최근 들어간 경매 url에서 id를 추출하거나 로컬 스토리지에서 찾아서 저장
-        // // 프론트 백엔드를 나눈다면 물품의 url을 공유 못하지 않나?
-        // // 스토리지에 전에 보냈던 내용 저장하고 일치성 판단후 개수 세고 판단
-        // var highPrice = HANDSUP['high_price']; // 최고가가 아직 없다면 ? 지정한 최저가가 될 것 => 삼항문자 
-        // var goodsId = HANDSUP['goods_id'];
-        // var backUrl = '127.0.0.1:8000'
-        // var backEndUrl = 'http://127.0.0.1:8000'
-        // var token = localStorage.getItem('access')
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/main.js"></script>
 
-
-
-        // async function goodsInfoView() {
-        //     let data = await goodsInfoApi()
-        //     let seller = data['seller']
-        //     let images = data['goodsimage_set']
-        //     let nowPrice = highPrice === 0 ? data['start_price'] : highPrice
-        //     let ratingScore = data['seller']['rating_score']
-        //     let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(ratingScore / 25)]
-        //     console.log(data)
-        //     console.log(nowPrice, ratingScore, ratingColor)
-
-        //     // 사진 섹션
-        //     var temp = ``
-        //     for (var i = 0; i < data['images'].length; i++) {
-        //         temp += `
-        //         <div class="swiper-slide">
-        //             <img style="box-shadow: 0 2px 5px 0px; border-radius:10px" src="${backEndUrl}${data['images'][i]['image']}" alt="상품이미지"/>
-        //         </div>
-        //     `
-        //     }
-        //     document.getElementById('swiper-wrapper').innerHTML = temp
-
-        //     const swiper = new Swiper('.swiper', {
-        //         // Optional parameters
-        //         // direction: 'vertical',
-        //         // loop: true,
-
-        //         // If we need pagination
-        //         pagination: {
-        //             // el: '.swiper-pagination',
-        //         },
-
-        //         // Navigation arrows
-        //         navigation: {
-        //             nextEl: '.swiper-button-next',
-        //             prevEl: '.swiper-button-prev',
-        //         },
-
-        //         // And if we need scrollbar
-        //         scrollbar: {
-        //             el: '.swiper-scrollbar',
-        //         },
-        //     });
-        //     // 사용자 정보 섹션
-        //     var temp = `
-        //         <div class = "p-3 card mb-3" style= "background-color : #2c2c2c; border-radius : 10px; color : white;">
-        //             <div class = "row" onclick="console.log('프로필로이동하장')">
-        //                 <div class = "col-2">
-        //                     <img style="border-radius:50%;" src="${seller['profile_image']}" alt="img">
-        //                 </div>
-        //                 <div class = "col-4">
-        //                     <b>${seller["username"]}</b>
-        //                 </div>
-        //                 <div class = "col-6 text-end">
-        //                     <div class="progress" max=100 style="--w:${ratingScore}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
-        //                     <span class='text-secondary small'>매너점수</span> ${seller["rating_score"]}
-                            
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     `
-        //     document.getElementById('seller-info-wrap').innerHTML = temp
-        //     // 판매자 예상 가치 섹션
-        //     var temp = `
-        //         <div class = "p-3 card mb-3" style="background-color : #2c2c2c; color:white; border-radius:10px;">
-        //             <div class ="row">
-        //                 <span class="col-6" style="font-weight : 600;">
-        //                     판매자 예상 가치 :                        
-        //                 </span>
-        //                 <span class="text-end col-6" style="font-weight : 700">
-        //                     ${data['predict_price']} 원 
-        //                 </span>
-        //             </div>
-        //         </div>
-        //     `
-        //     document.getElementById('predict-price-wrap').innerHTML = temp
-
-        //     // 물건 정보 섹션
-        //     var time = data["created_at"].slice(undefined,-7)
-        //     var temp = `
-        //         <div class = "p-3 card mb-3" style="background-color : #2c2c2c; color:white; border-radius:10px;">
-        //             <h3 style="color:white; font-weight:600;">${data['title']}</h3>
-                                    
-        //             <div class="small">카테고리 : ${data['category']}, <span style="font-size:14px"><time class="timeago" datetime="${time}"></time></span></div>
-        //             <div class="card-body" style="font-weight:600">${data['content']}</div>
-        //         </div>
-        //     `
-        //     document.getElementById('goods-info-wrap').innerHTML = temp
-        //     $("time.timeago").timeago();
-            
-        //     // 타이머 시작 전 => 시작 일시 보여주기
-        //     // 시작중 => 타이머 보여주기
-        //     // 종료 => 경매 종료 표시
-        //     await goodsStatusView(data)
-
-            
-        // }
-
-
-        // async function goodsInfoApi() {
-        //     const response = await fetch(`${backEndUrl}/goods/${goodsId}/`, {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': 'Bearer ' + token,
-        //         }
-        //     })
-        //     response_json = await response.json()
-        //     if (response.status == 200) {
-        //         HANDSUP['high_price'] = response_json['high_price'] === 0? response_json['start_price'] : response_json['high_price']
-        //         HANDSUP['seller_id'] = response_json['seller']['id']
-        //         HANDSUP['buyer_id'] = response_json['buyer']?.id
-        //         localStorage.setItem('handsup', JSON.stringify(HANDSUP))
-        //         return response_json
-        //     }
-        //     else if (response.status == 400) {
-        //         console.log(response_json)
-        //     }
-        // }
-
-        // async function goodsStatusView(data) {
-        //     // 타이머 만드는 로직 - 시작시간 시:분과 시작날짜 yyyy-mm-dd를 이용하여 Date를 만듦
-        //     // 20분 - (현재 시각 - 시작 시각)
-        //     let status = data['status']
-        //     let startDate = data['start_date']
-        //     let startTime = `${data['start_time']}:00`
-        //     let time2 = parseInt((DATE.getTime() - new Date(`${startDate} ${startTime}`).getTime()) / 1000)
-        //     let totalSecond = 20 * 60 - time2
-        //     if (status === true) {
-        //         await startTimer(totalSecond)
-
-        //         if (data['buyer'] !== null) {
-        //             let buyer = data['buyer']
-        //             //사진으로 해야하는지 의문
-        //             document.getElementById('high-price').innerHTML = `
-        //             <div class="p-3 text-center mb-3">
-        //                 <div class="mb-3 card p-2" style="box-shadow: 0 2px 5px 0px;">
-        //                     <div>
-        //                         <i class="fas fa-won-sign" style="color:green;"></i>
-        //                         현재 최고가
-        //                     </div>
-        //                     <div style = "font-wetight : 600">
-        //                         <b style = "font-size:22px">${data['high_price']}</b> <span class = "text-secondary">원</span>
-        //                     </div>
-        //                 </div>
-        //                 <div class = "card p-2 mb-3" style="box-shadow: 0 2px 5px 0px;">
-        //                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-        //                     <div class="" style="font-size:25px; font-weight : 700;" onclick="console.log('프로필로 가장')">
-        //                         ${buyer['username']}
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             `
-        //         } else {
-        //             document.getElementById('high-price').innerHTML = `
-        //             <div class="p-3 text-center card mb-3" style="box-shadow: 0 2px 5px 0px;">
-        //                 <div style="font-weight : 500">과연 첫 번째 오너는?</div>
-        //                 <span style="font-weight:600;">시작가 <span style="font-size:24px; font-weight : 700;">${data['start_price']}</span> 원</span>
-        //             </div>
-        //             `
-        //         }
-        //     } else if (status === false) { // 가림막 보이게 하고 낙찰자이름 가격 보이게 하기?
-        //         var buyer = data['buyer'] === null? '낙찰자가 없습니다.' : data['buyer']['username']
-        //         $('#auction-wrap').empty()
-        //         var temp = `
-        //         <div id="auction-before-message" class = "text-center">
-        //             <div style="font-size: 20px;" font-weight: 600;>낙찰 받은 주인공!</div>
-        //             <div style="font-size : 25px; font-weight:600;">${buyer}</div>
-        //             <div  style='padding:15px 44% 0; font-size: 25px; font-weight : 500;'>경매가 종료 되었습니다.</div>
-        //         </div>
-        //         `
-        //         $('#auction-wrap').html(temp)
-        //         $('#chat-message-input').attr('disabled', true)
-        //         $('#chat-message-input').attr('placeholder', '경매가 종료되어 채팅이 불가능합니다.')
-        //         $('#chat-message-submit').attr('disabled', true)
-
-        //     } else { // 시작 전 타이머는 20분 세팅하고 가림막 보이게 하기 아직 시작 전이라 알리기
-        //         $('#auction-wrap').empty()
-        //         var temp = `
-        //         <div id="auction-before-message" class = "text-center">
-        //             <div style="font-size: 20px;" font-weight: 600;>경매 시작 시간</div>
-        //             <div style="font-size : 25px; font-weight:600;">${data['start_date']} ${data['start_time']}:00</div>
-        //             <div  style='padding:15px 44% 0; color:white; font-size: 25px; font-weight : 500;'>오너 될 준비, 되셨나요 ??</div>
-        //         </div>
-                
-        //         `
-        //         $('#auction-wrap').html(temp)
-        //     }
-        // }
-
-        // async function startTimer(time) {
-        //     console.log('dd')
-        //     let totalSecond = time
-
-        //     let x = setInterval(function () {
-        //         let min = parseInt(totalSecond / 60)
-        //         let sec = totalSecond % 60
-        //         let perTime = totalSecond / (60 * 20) * 100
-        //         let percolor = perTime <= 10 ? 'red' : ['yellow', 'blue', 'purple'][parseInt(perTime / 40)]
-        //         console.log(percolor)
-        //         document.getElementById('center-timer').innerHTML = min + "분" + sec + "초";
-        //         $('.pie-timer').css({
-        //             "background": "conic-gradient(" + percolor + " 0% " + perTime + "%, #ffffff " + perTime + "% 100%)"
-        //         });
-        //         totalSecond--;
-
-        //         if (totalSecond < 0) {
-        //             clearInterval(x);
-        //             document.getElementById('center-timer').innerHTML = '<i class="fas fa-gavel" style="color:red;"></i> 경매 종료';
-        //         }
-        //     }, 1000);
-        // }
-
-        // goodsInfoView()
-
-        // let chatSocket = new WebSocket(
-        //     `ws://${backUrl}/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
-        // );
-
-        // chatSocket.onopen = (e) => {
-        //     console.log('connect')
-        // }
-
-        // chatSocket.onmessage = function (e) {
-        //     var data = JSON.parse(e.data);
-        //     var message = data['message'];
-        //     var responseType = data['response_type'];
-        //     console.log(responseType)
-        //     var element = document.getElementById('chat-wrap');
-        //     var isEnd = element.scrollHeight <= element.scrollTop + element.clientHeight + 3;
-
-        //     if (responseType === 'alert'){
-        //         alert(data['message'])
-        //         return
-        //     }
-
-        //     if (responseType === 'bid') {
-        //         var highPrice = data['high_price']
-        //         HANDSUP['high_price'] = highPrice
-        //         HANDSUP['buyer_id'] = data['sender']
-
-        //         localStorage.setItem('handsup', JSON.stringify(HANDSUP));
-
-
-        //         var temp = `
-        //             <div class="p-3 text-center mb-3">
-        //                 <div class="mb-3 card p-2">
-        //                     <div>
-        //                         <i class="fas fa-won-sign" style="color:green;"></i>
-        //                         현재 최고가
-        //                     </div>
-        //                     <div style = "font-wetight : 600">
-        //                         <b style = "font-size:22px">${data['high_price']}</b> <span class = "text-secondary">원</span>
-        //                     </div>
-        //                 </div>
-        //                 <div class = "card p-2 mb-3">
-        //                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-        //                     <div class="" style="font-size:25px;" onclick="console.log('프로필로 가장')">
-        //                         ${data['sender_name']}
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             `
-        //         document.getElementById('high-price').innerHTML = temp
-
-        //         var temp = `
-        //             <div>
-        //                 <div>
-        //                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
-        //                     <b style = "font-size : 20px">${data['sender_name']}</b>
-        //                 </div>
-        //                 <div style = "margin-left : 20px; width: 80%; font-size : 20px; border-radius : 8px; background-color : hotpink; padding : 5px; margin-bottom : 10px;">
-        //                     ${data['high_price']} 원 입찰!!
-        //                 </div>
-        //             </div>
-        //         `
-        //         // beforeend afterbegin beforebegin afterend
-        //         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
-
-        //     } else if (responseType === 'message') {
-        //         var nowOner = HANDSUP['buyer_id']
-        //         var seller = HANDSUP['seller_id']
-        //         if (seller === data['sender']){
-        //             var temp = `
-        //             <div>
-        //                 <div>
-        //                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
-        //                     <b style = "font-size : 20px">${data['sender_name']} (판매자)</b> <span style="font-color : gray; font-size:small;">${data['time']}</span>
-        //                 </div>
-        //                 <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
-        //                     ${data['message']}
-        //                 </div>
-        //             </div>
-        //         `
-        //         } else if ( nowOner === data['sender']){
-        //             var temp = `
-        //             <div>
-        //                 <div>
-        //                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
-        //                     <b style = "font-size : 20px">${data['sender_name']} </b> (현재 최고가 입찰자) <span style="font-color : gray; font-size:small;">${data['time']}</span>
-        //                 </div>
-        //                 <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
-        //                     ${data['message']}
-        //                 </div>
-        //             </div>
-        //         `
-        //         }else{
-        //             var temp = `
-        //             <div>
-        //                 <div>
-        //                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
-        //                     <b style = "font-size : 20px">${data['sender_name']}</b> <span style="font-color : gray; font-size:small;">${data['time']}</span>
-        //                 </div>
-        //                 <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
-        //                     ${data['message']}
-        //                 </div>
-        //             </div>
-        //         `
-        //         }
-                
-        //         // beforeend afterbegin beforebegin afterend
-        //         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
-        //     } else if( responseType === 'enter'){
-        //         HANDSUP['participants_count'] = data['participants_count']
-        //         localStorage.setItem('handsup', JSON.stringify(HANDSUP))
-        //         var temp = `
-        //             <div>
-        //                 <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
-        //                     ${data['sender_name']}님이 입장하였습니다.
-        //                 </div>
-        //             </div>
-        //         `
-        //         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
-        //         document.getElementById('participants-count').innerText = '참여 인원 : '+data['participants_count']
-                
-        //     } else if(responseType === 'out'){
-        //         HANDSUP['participants_count'] = data['participants_count']
-        //         localStorage.setItem('handsup', JSON.stringify(HANDSUP))
-        //         document.getElementById('participants-count').innerText = '참여 인원 : '+data['participants_count']
-
-
-        //     }
-
-        //     // 하단 스크롤 고정
-        //     if (isEnd === true) {
-        //         element.scrollTop = element.scrollHeight //- element.clientHeight
-        //     }
-
-        // };
-
-        // chatSocket.onclose = function (e) {
-        //     console.error('Chat socket closed unexpectedly');
-        // };
-
-        // document.querySelector('#chat-message-input').focus();
-        // document.querySelector('#chat-message-input').onkeyup = function (e) {
-        //     if (e.keyCode === 13) {  // enter, return
-        //         sendMessage(false)
-        //     }
-        // };
-
-        // function sendMessage() {
-        //     var messageInputDom = document.querySelector('#chat-message-input');
-        //     var message = messageInputDom.value;
-        //     var element = document.getElementById('chat-wrap');
-        //     if (message === '') {
-        //         return
-        //     }
-        //     // console.log(HANDSUP, payload)
-        //     if (chatSocket.readyState === WebSocket.OPEN) {
-        //         chatSocket.send(JSON.stringify({
-        //             'is_money': false,
-        //             'goods_id': goodsId,
-        //             'user_id': payload['user_id'],
-        //             'message': message
-        //         }))
-        //     } else {
-        //         setTimeout(sendMessage, 500)
-        //     }
-        //     messageInputDom.value = '';
-        // };
-
-        // function sendMoney() {
-        //     var messageInputDom = document.querySelector('#chat-money-input');
-        //     var message = messageInputDom.value;
-        //     console.log(highPrice)
-        //     // console.log(HANDSUP, payload)
-        //     if (chatSocket.readyState === WebSocket.OPEN) {
-
-        //         money = Number(message)
-        //         console.log(money, typeof (money))
-        //         // money === NaN이 안먹힌다.
-        //         if (String(money) == 'NaN') {
-        //             return alert('숫자를 입력해 주세요.')
-        //         } else if (highPrice >= parseInt(money)) {
-        //             return alert('현재가 보다 낮은 가격입니다.')
-        //         } else {
-        //             chatSocket.send(JSON.stringify({
-        //                 'is_money': true,
-        //                 'goods_id': goodsId,
-        //                 'user_id': payload['user_id'],
-        //                 'message': money
-        //             }))
-        //         }
-        //     } else {
-        //         setTimeout(sendMessage, 500)
-        //     }
-
-        //     messageInputDom.value = '';
-        // };
-
-    </script>
 </body>
 
 </html>

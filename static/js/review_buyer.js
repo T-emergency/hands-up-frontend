@@ -14,11 +14,11 @@ function selectScore(score_1){
 
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined1" autocomplete="off" value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined1" style="width:400px">설명과 너무 다른 물건이에요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined1" style="width:400px">설명과 완전 다른 물건을 받았어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex; justify-content:end; " >
                        <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined2" autocomplete="off" value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">연락이 없어요ddddddddddd</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">거래하기로 해놓고 연락이 없어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex; justify-content:end; " >
                        <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined3" autocomplete="off" value="-20">
@@ -26,7 +26,7 @@ function selectScore(score_1){
                    </div>
                    <div class="col-lg-12" style="display:flex; justify-content:end; " >
                        <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined4" autocomplete="off" value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined4" style="width:400px">시간 약속을 여러번 바꿨어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined4" style="width:400px">시간 약속을 너무 안지켜요</label><br>
                    </div>
                </div>
            </div>
@@ -35,19 +35,19 @@ function selectScore(score_1){
 
                <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-3-outlined" autocomplete="off"value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">정말 친절해요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">반말이나 욕설을 했어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                    <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-4-outlined" autocomplete="off"value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-4-outlined" style="width:400px;">물건상태가 정말 좋아요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-4-outlined" style="width:400px;">낙찰가가 아닌 다른 금액을 요구해요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                    <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-5-outlined" autocomplete="off"value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">네고를 해줬어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">성적인 말을 했어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                    <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-6-outlined" autocomplete="off"value="-20">
-                       <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">질문에 대답을 잘 해줬어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">기타</label><br>
                    </div>
                </div>
            </div>
@@ -68,19 +68,19 @@ function selectScore(score_1){
 
                     <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                         <input name="animal" type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined1" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined1" style="width:400px">제가 있는 곳까지 와주셨어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined1" style="width:400px">설명과 조금 다른 물건을 받았어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input name="animal" type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined2" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">답장이 빨라요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">거래는 했지만 연락이 힘들었어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input name="animal" type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined3" autocomplete="이거" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined3" style="width:400px">네고를 해줬어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined3" style="width:400px">전문 업자가 의심돼요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input name="animal" type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined4" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined4" style="width:400px">시간 약속을 잘 지켰어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined4" style="width:400px">시간 약속을 잘 안지켰어요</label><br>
                    </div>
                </div>
            </div>
@@ -89,19 +89,19 @@ function selectScore(score_1){
 
                <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-3-outlined" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">정말 친절해요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">말을 기분나쁘게 했어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-4-outlined" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-4-outlined" style="width:400px">d</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-4-outlined" style="width:400px">금액을 바꾸려는 시도가 있었어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-5-outlined" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">d</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">거래방식 변경이 있었어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-6-outlined" autocomplete="off" value="0">
-                       <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">d</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">외부채널을 유도하는 사기가 의심돼요</label><br>
                    </div>
                </div>
            </div>
@@ -125,11 +125,11 @@ function selectScore(score_1){
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined2" autocomplete="off" value="3">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">답장이 빨라요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">연락이 잘 되었어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined3" autocomplete="off" value="3">
-                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined3" style="width:400px">네고를 해줬어요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-2-outlined3" style="width:400px">어느정도 네고를 해줬어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined4" autocomplete="off" value="3">
@@ -142,19 +142,19 @@ function selectScore(score_1){
 
                <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-3-outlined" autocomplete="off" value="3">
-                       <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">정말 친절해요</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">친절해요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-4-outlined" autocomplete="off" value="3">
-                       <label class="btn btn-outline-secondary" for="btn-check-4-outlined" style="width:400px">d</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-4-outlined" style="width:400px">물건 상태가 마음에 들어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-5-outlined" autocomplete="off" value="3">
-                       <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">d</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">거래가 빨랐어요</label><br>
                    </div>
                    <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                        <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-6-outlined" autocomplete="off" value="3">
-                       <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">d</label><br>
+                       <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">추가물품을 줬어요</label><br>
                    </div>
                </div>
            </div>
@@ -174,19 +174,19 @@ function selectScore(score_1){
 
     <div class="col-lg-12" style="display:flex;justify-content:end;  " >
     <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined1" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined1" style="width:400px">제가 있는 곳까지 와주셨어요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined1" style="width:400px">원하는 방식으로 거래를 해주셨어요</label><br>
                 </div>
                 <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                 <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined2" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">답장이 빨라요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined2" style="width:400px">연락을 항상 잘해주셨어요</label><br>
                 </div>
                 <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                 <input  type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined3" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined3" style="width:400px">네고를 해줬어요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined3" style="width:400px">원하는 가격으로 네고를 해줬어요</label><br>
                 </div>
                 <div class="col-lg-12" style="display:flex;justify-content:end;  " >
                 <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-2-outlined4" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined4" style="width:400px">시간 약속을 잘 지켰어요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-2-outlined4" style="width:400px">시간 약속을 한번도 어기지 않고 잘 지켰어요</label><br>
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@ function selectScore(score_1){
 
             <div class="col-lg-12" style="display:flex;justify-content:start;  " >
             <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-3-outlined" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">정말 친절해요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-3-outlined" style="width:400px">항상 친절하게 말해주셨어요</label><br>
                 </div>
                 <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                 <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-4-outlined" autocomplete="off" value="5">
@@ -203,11 +203,11 @@ function selectScore(score_1){
                 </div>
                 <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                 <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-5-outlined" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">네고를 해줬어요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-5-outlined" style="width:400px">거래 이후에 연락이 잘됐어요</label><br>
                 </div>
                 <div class="col-lg-12" style="display:flex;justify-content:start;  " >
                 <input type="checkbox" class="col-lg-12 btn-check" id="btn-check-6-outlined" autocomplete="off" value="5">
-                    <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px">질문에 대답을 잘 해줬어요</label><br>
+                    <label class="btn btn-outline-secondary" for="btn-check-6-outlined" style="width:400px"></label><br>
                 </div>
             </div>
         </div>
@@ -239,12 +239,12 @@ function selectScore(score_1){
 
 // 댓글
 function reviewCreate() {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyMzUxMzUxLCJpYXQiOjE2NzA1NTEzNTEsImp0aSI6IjAxMjM0YTkxYjFiZTQwNWM4MzMyMGJlZWQyYmJkMThhIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiIxMjMiLCJwaG9uZSI6IjEifQ.SR-l_ePuwgYxeSmlRx_-segvGNJ2FUyn2Df1WdtEVPk'
 
    let content = $("#content").val()
    let score= $("input[type=checkbox]:checked").val()
    let formData = new FormData();
    formData.append("content",content);
+   formData.append("score",score);
    console.log("content",content)
    console.log("score",score)
    console.log(formData)
@@ -258,19 +258,21 @@ function reviewCreate() {
        data: formData,
        
        headers: {
-        "Authorization": "Bearer " + accessToken,
+        "Authorization": "Bearer " + localStorage.getItem("access"),
     },
 
        success: function () {
            location.reload()
        },
-       error : function(){
+       error : function(response){
+        console.log(response)
        if(score==undefined){
        alert("상대방과 거래가 어땠는지 선택해주세요");
        }else if(content==''){
        alert("내용을 입력해주세요. 최대 50자");
-
-       }
+       }else if(response.status == 409){
+        alert("이미 평가 했습니다.");
+        }
    
        }
 

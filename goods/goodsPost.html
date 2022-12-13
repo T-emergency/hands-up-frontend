@@ -41,7 +41,7 @@
                 width:70%;
                 height:70%;
                 margin:auto;
-                margin-top: 30px;
+                margin-top: 100px;
                 /* border: 1px solid gray; */
                 border-radius: 10px;
             }
@@ -76,58 +76,6 @@
         </style>
           
     </head>
-    <header class="header" style="
-    background: linear-gradient(45deg, #8088ff, #c24aff) !important;
-    position: sticky;
-    z-index: 99;
-    width: 100%;
-    color: white;
-">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
-                    </div>
-                </div>
-                <div class="col-lg-8" style="padding: 0;">
-                    <nav class="header__menu">
-                        <ul style="color: white;">
-                            <li><a href="/goods/index.html">경매</a>
-                                <!-- <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul> -->
-                            </li>
-                            <li><a href="/blog/blog.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact & Feedback</a></li>
-                            <li style="margin-right: 0;">
-                                <input type="text" class="form-control" placeholder="What do yo u need?">
-                            </li>
-                            <li style="margin: 0;" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-2">
-
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i></a></li>
-                            <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                            <i class="fas fa-heart" style="color: black;"></i>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div> 
-    </header>
     
     <body style="
         background-color: #fffef7;
@@ -138,57 +86,8 @@
             <div class="loader" style="display: none;"></div>
         </div>
     
-        <!-- Humberger Begin -->
-        <div class="humberger__menu__overlay" style="z-index: 995;"></div>
-        <div class="humberger__menu__wrapper" style="z-index: 999;">
-            <div class="humberger__menu__widget">
-                <div class="header__top__right__auth">
-                    <a href="#"><i class="fa fa-user"></i> Login</a>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap">
-                <div class="slicknav_menu">
-                    <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                        <ul>
-                            <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                            <li><a href="/goods/index.html">경매장</a></li>
-                            <!-- <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
-                            <li><a href="/blog/blog.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact & Feedback</a></li>
-                            <li class="p-2">
-                                    <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                                    <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- <div class="header__top__right__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            </div>
-            <div class="humberger__menu__contact">
-                <ul>
-                    <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                    <li>Free Shipping for all Order of $99</li>
-                </ul>
-            </div> -->
-        </div>
-        <!-- Humberger End -->
-    
-        <!-- Header Section Begin -->
-      
-        <!-- Header Section End -->
+        <div id="nav-header"></div>
+
 
         <!-- post Section -->
     <div class="post-title"> 경매등록 페이지</div>
@@ -222,27 +121,29 @@
                 <div class="mb-3">
                     <input class="form-control" type="file" id="image" multiple />
                 </div>
+                <div id="image-wrap" class="row">
+                    
+                </div>
                 <div id="fileList" ></div>
                 <!-- 예상가치 -->
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="predict_price" placeholder="예상가격">
+                        <input id="predictPrice" type="text" class="form-control" placeholder="예상가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 시작가격 -->
                     <div class="mb-3">
-                        
-                        <input type="text" class="form-control" id="start_price" placeholder="시작가격">
+                        <input id = "startPrice" type="text" class="form-control" placeholder="시작가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 경매 날짜 -->
-                    <input class="inputdate" type ="date" id ="start" />
-                    <!-- 경매 시간 -->
-                    <input class="inputtime" id="starttime" type="time" id="appt" name="appt" min="09:00" max="09:20" required style="margin-bottom: 20px;">
+                    <div id = "date-time">
+                        <!-- <input class="inputdate" type ="date" id ="start" /> -->
+                        <!-- 경매 시간 -->
+                        <!-- <input class="inputtime" id="starttime" type="time" id="appt" name="appt" min="09:00" max="09:20" required style="margin-bottom: 20px;"> -->
+                    </div>
                     <br>
                     <!-- 게시글  -->
                     
-                    <textarea rows="11" clos="50" class="form-control" id="content" rows="3">
-                        
-                    </textarea>
+                    <textarea rows="11" clos="50" class="form-control" id="content" rows="3"></textarea>
                 </div>
             </div>
        </div>
@@ -267,6 +168,7 @@
     <script src="/static/js/jquery.slicknav.js"></script>
     <script src="/static/js/mixitup.min.js"></script>
     <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/nav.js"></script>
     <script src="/static/js/main.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

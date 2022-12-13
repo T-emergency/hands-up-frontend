@@ -28,32 +28,39 @@
     <!-- <link rel="stylesheet" href="/static/css/all.min.css"> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <script src="/code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
     <style>
         .header__menu>ul>li {
             margin: 0 10px;
         }
-        .hero__categories>ul>li:hover{
-            cursor: pointer;
+        .progress {
+
+        position: relative;
+        height: 15px;
+        border-radius: 7.5px;
         }
-        .hero__categories > ul>li.active{
-            background-color: #ffd700;
-            border: 2px solid rgb(0, 0, 0);
 
-
+        .progress::after {
+        content: '\A';
+        position: absolute;
+        border-radius: 0 15px 15px 0;
+        /* background-color: var(--c); */
+        background: linear-gradient(to right, var(--c1), var(--c2));
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: var(--w);
+        /* Specify the width.. */
+        -webkit-animation: filler 1.5s ease-in-out;
+        -moz-animation: filler 1.5s ease-in-out;
+        animation: filler 1.5s ease-in-out;
         }
     </style>
-    
 </head>
 
 <body style="
         background-color: #24210b;
     " class="">
-    <div style="position: fixed; z-index: 9999; right: 10%; bottom: 8%; color: #ffd700;">
-        <div class="text-center" onclick="window.location.href='/goods/goodsPost.html'" style="width:60px; height: 60px; border-radius: 30px; background-color: gold; border: 2px solid white; cursor: pointer;">
-            <i class="fas fa-gavel" style="color: black; font-size: 30px; line-height: 60px;"></i>
-        </div>
-    </div>
     <!-- Page Preloder -->
     <div id="preloder" style="display: none;">
         <div class="loader" style="display: none;"></div>
@@ -62,12 +69,37 @@
     
 
 
-    <main style="margin-top: 30px;">
+    <main>
         <!-- Featured Section Begin -->
         <section class="featured spad">
-            <div class="container" style="margin-top: 30px;">
+            <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+                        <!--  -->
+                        <div
+                        style="width:100%; display: flex; text-align: center; justify-content: center; margin-bottom: 30px; background-color: fffef7; border-radius: 20px;">
+                        <div style="padding: 20px 60px;">
+                            <div class="box" style="width: 175px; height: 175px;">
+
+                                <img class="profile" id="profile_image" style="border-radius: 500px;">
+
+                            </div>
+                        </div>
+                        <div style="text-align: left; width: 300px;">
+                            <div style="display: flex; flex-direction: row; margin: 20px 0">
+                                <div style="font-size: 26px; margin-right: 40px; color: white;" id="username">
+
+
+                                </div>
+
+                            </div>
+
+
+                            <div id="temp">
+
+                            </div>
+                        </div>
+                    </div>
                         
                         <!-- <div class="section-title">
                             <h2></h2>
@@ -77,64 +109,18 @@
                         <div class="container">
                             <div class="hero__categories" style="margin-bottom: 60px;">
                                 <div class="hero__categories__all" style="background-color: #ffd700;">
-                                    <i class="fa fa-bars"></i>
-                                    <span>카테고리</span>
+                                    <i style="color: #24210b;" class="fa fa-bars"></i>
+                                    <span style="color: #24210b;">카테고리</span>
                                 </div>
-                                <ul class="row text-center" style="margin-left: 0;">
-                                    <li class="col-sm-2 mb-2" id="ct-" onclick="filter('all','','')">
-                                        <i class="fas fa-globe-asia"></i>
-                                        전체
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-digital" onclick="filter('디지털기기','','')">
-                                        <i class="fas fa-laptop"></i>
-                                        디지털기기
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-machine" onclick="filter('생활가전','','')">
-                                        <i class="fas fa-plug"></i>
-                                        생활가전
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-inte" onclick="filter('가구/인테리어','','')">
-                                        <i class="fas fa-couch"></i>
 
-                                        가구 &amp; 인테리어
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-dinning" onclick="filter('생활/주방','','')">
-                                        <i class="fas fa-sink"></i>
-                                        생활 &amp; 주방
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-baby" onclick="filter('유아','','')">
-                                        <i class="fas fa-baby-carriage"></i>
-                                        유아
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-w-cloth" onclick="filter('여성의류','','')">
-                                        <i class="fas fa-female"></i>
-                                        여성 의류
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-m-cloth" onclick="filter('남성의류','','')">
-                                        <i class="fas fa-male"></i>
-                                        남성 의류
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-sport" onclick="filter('스포츠','','')">
-                                        <i class="fas fa-dumbbell"></i>
-                                        스포츠
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-animal" onclick="filter('반려동물용품','','')">
-                                        <i class="fas fa-dog"></i>
-                                        반려동물 용품
-                                    </li>
-                                    <li class="col-sm-2 mb-2" id="ct-etc" onclick="filter('기타','','')">
-                                        <i class="fas fa-won-sign"></i>
-                                        기타
-                                    </li>
-                                </ul>
-                                <ul style="border-radius: 0 0 15px 15px;">
-                                    <li id="st-" onclick="filter('','all','')">전체</li>
-                                    <li id="st-true" onclick="filter('',true,'')">
+                                <ul style="margin-left: 0px; display: none; background-color: #24210b;">
+                                    <li style="background-color: white; cursor : pointer;" id="st-" onclick="filter('','all','')">전체</li>
+                                    <li style="background-color: white; cursor : pointer;" id="st-true" onclick="filter('',true,'')">
                                         <i class="fas fa-fire-alt"></i>
                                         경매중
                                     </li>
-                                    <li id="st-null" onclick="filter('',null,'')">경매전</li>
-                                    <li id="st-false" onclick="filter('',false,'')">경매종료</li>
+                                    <li style="background-color: white; cursor : pointer;" id="st-null" onclick="filter('',null,'')">경매전</li>
+                                    <li style="background-color: white; cursor : pointer;" id="st-false" onclick="filter('',false,'')">경매종료</li>
                                 </ul>
                             </div>
                         </div>
@@ -192,10 +178,9 @@
     <script src="/static/js/jquery.slicknav.js"></script>
     <!-- <script src="/static/js/mixitup.min.js"></script> -->
     <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/nav.js"></script>
     <script src="/static/js/base.js"></script>
     <script src="/static/js/main.js"></script>
-    <script src="/static/js/auction_index.js"></script>
+    <script src="/static/js/review_goods_list.js"></script>
 
 
 

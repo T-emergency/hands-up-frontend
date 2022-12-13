@@ -1,307 +1,216 @@
 <!DOCTYPE html>
+<!-- saved from url=(0023)http://127.0.0.1:5503/# -->
 <html lang="ko">
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-        <meta name="description" content="Ogani Template">
-        <meta name="keywords" content="Ogani, unica, creative, html">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>👋 핸즈업</title>
-    
-        <!-- Google Font -->
-        <link href="/static/css/css2" rel="stylesheet">
-    
-        <!-- js -->
-        <script src="/static/js/review_seller.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
-        <!-- Css Styles -->
-        
-        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/css/font-awesome.min.css" >
-        <link rel="stylesheet" href="/static/css/elegant-icons.css" >
-        <link rel="stylesheet" href="/static/css/nice-select.css" >
-        <link rel="stylesheet" href="/static/css/jquery-ui.min.css" >
-        <link rel="stylesheet" href="/static/css/owl.carousel.min.css" >
-        <link rel="stylesheet" href="/static/css/slicknav.min.css" >
-        <link rel="stylesheet" href="/static/css/style.css" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <link rel="stylesheet" href="/static/css/all.min.css">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>👋 핸즈업</title>
+
+    <!-- Google Font -->
+    <link href="" rel="stylesheet">
     
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-
-        <style>
-
-            .header__menu > ul >li{
-                margin: 0 10px;
-            }
-            .btn-outline-secondary {
-                    /* 글자색 */
-                    --bs-btn-color: #000000;
-                    --bs-btn-border-color: #49aaff;
-                    --bs-btn-hover-color: rgb(201, 74, 255);
-                    --bs-btn-hover-bg: #ff63ffe5;
-                    --bs-btn-hover-border-color: #f652ff;
-                    --bs-btn-focus-shadow-rgb: 108,117,125;
-                    /* 글자색 */
-                    --bs-btn-active-color: rgb(0, 0, 0);
-                    --bs-btn-active-bg: #689bffe5;
-                    --bs-btn-active-border-color: #689bffe5;
-                    --bs-btn-active-shadow: inset 0 3px 5px rgba(255, 0, 0, 0.125);
-                    --bs-btn-disabled-color: #61b5ff;
-                    --bs-btn-disabled-bg: transparent;
-                    --bs-btn-disabled-border-color: #62b6ff;
-                    --bs-gradient: #8088ff, #c24aff;
-            }
-
-            
-        </style>
-    </head>
+    <!-- Css Styles -->
     
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/elegant-icons.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/slicknav.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- <link rel="stylesheet" href="/static/css/all.min.css"> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+        .header__menu>ul>li {
+            margin: 0 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn-outline-secondary {
+            /* 글자색 */
+            --bs-btn-color: #000000;
+            --bs-btn-border-color: #49aaff;
+            --bs-btn-hover-color: rgb(201, 74, 255);
+            --bs-btn-hover-bg: #ff63ffe5;
+            --bs-btn-hover-border-color: #f652ff;
+            --bs-btn-focus-shadow-rgb: 108, 117, 125;
+            /* 글자색 */
+            --bs-btn-active-color: rgb(0, 0, 0);
+            --bs-btn-active-bg: #689bffe5;
+            --bs-btn-active-border-color: #689bffe5;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(255, 0, 0, 0.125);
+            --bs-btn-disabled-color: #61b5ff;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: #62b6ff;
+            --bs-gradient: #8088ff, #c24aff;
+        }
+    </style>
+</head>
+
+
+
+
 <body style="
-        background-color: #fffef7;
-    " class="">
-        <!-- Page Preloder -->
-        <div id="preloder" style="display: none;">
-            <div class="loader" style="display: none;"></div>
-        </div>
-    
-        <!-- Humberger Begin -->
-        <div class="humberger__menu__overlay" style="z-index: 995;"></div>
-        <div class="humberger__menu__wrapper" style="z-index: 999;">
-            <div class="humberger__menu__widget">
-                <div class="header__top__right__auth">
-                    <a href="#"><i class="fa fa-user"></i> Login</a>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap">
-                <div class="slicknav_menu">
-                    <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                        <ul>
-                            <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                            <li><a href="/goods/index.html">경매장</a></li>
-                            <!-- <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
-                            <li><a href="/blog/blog.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact & Feedback</a></li>
-                            <li class="p-2">
-                                    <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                                    <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- <div class="header__top__right__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-            </div>
-            <div class="humberger__menu__contact">
-                <ul>
-                    <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                    <li>Free Shipping for all Order of $99</li>
-                </ul>
-            </div> -->
-        </div>
-        <!-- Humberger End -->
-    
-        <!-- Header Section Begin -->
-        <header class="header" style="
-        background: linear-gradient(45deg, #8088ff, #c24aff) !important;
-        position: sticky;
-        z-index: 99;
-        width: 100%;
-        color: white;
-    ">
-    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <div class="header__logo">
-                            <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-8" style="padding: 0;">
-                        <nav class="header__menu">
-                            <ul style="color: white;">
-                                <li><a href="/goods/index.html">경매</a>
-                                    <!-- <ul class="header__menu__dropdown">
-                                        <li><a href="/shop-details.html">Shop Details</a></li>
-                                        <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="/checkout.html">Check Out</a></li>
-                                        <li><a href="/blog-details.html">Blog Details</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a href="/blog/blog.html">게시판</a></li>
-                                <li><a href="/contact.html">Contact & Feedback</a></li>
-                                <li style="margin-right: 0;">
-                                    <input type="text" class="form-control" placeholder="What do yo u need?">
-                                </li>
-                                <li style="margin: 0;" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-lg-2" style="display: flex; justify-content: center;">
-    
-                        <div class="header__cart">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user"></i></a></li>
-                                <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                                <i class="fas fa-heart" style="color: black;"></i>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="humberger__open">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </div>
-        </header>
-        <!-- Header Section End -->
+    background-color: #fffef7;
+" class="">
+    <!-- Page Preloder -->
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
 
-        <!-- <section class="featured spad">
-            <div class="container">
-                <div class="row">
-                    <div class="mb-3">
-                            <input type="text" style="text-align: center; justify-content: center;">
+    <div id="nav-header"></div>
 
 
-                        </div>
+
+
+    <!--  -->
+    <section class="featured spad">
+        <h3 class='subject mb-5' style="text-align: center; position: static; font-weight: bold;">판매후기 남기기 (구매자 평가하기)
+        </h3>
+
+
+        <div class="row" id="MixItUp8F371C" style=" justify-content: center; ">
+
+
+            <div class="col-lg-2 col-md-4 col-sm-6 mix"
+                style="display: flex; justify-content: center; height: 180px; background-color: fffef7; border-radius: 20px;">
+
+                <div class="featured__item" id="bad" onclick="selectScore(-20)"
+                    style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
+
+                    <div class="" data-setbg="img/featured/feature-2.jpg"
+                        style="margin: auto; background-image: url(/static/images/angry.png); background-color: fffef7; border-radius: 20px; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
+
+                    </div>
+
+
+                    <div class="featured__item__text">
+                        <h5>최악이에요</h5>
                     </div>
                 </div>
             </div>
-        </section> -->
 
 
-
-                    <!--  -->
-<h3 class='subject mb-5' style="text-align: center; position: static; margin-top: 50px; font-weight: bold;">판매후기 남기기 (구매자 평가하기)</h3>
-
-
-<div class="row" id="MixItUp8F371C" style=" justify-content: center; ">
+            <div class="col-lg-2 col-md-4 col-sm-6 mix"
+                style="display: flex; justify-content: center; height: 180px; background-color:fffef7; border-radius: 20px;">
+                <div class="featured__item" id="soso" onclick="selectScore(0)"
+                    style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
 
 
-    <div class="col-lg-2 col-md-4 col-sm-6 mix" style="display: flex; justify-content: center; height: 180px; background-color: fffef7; border-radius: 20px;">
+                    <div class="" data-setbg="img/featured/feature-2.jpg"
+                        style="margin: auto; background-image: url(/static/images/soso.png); background-color: fffef7; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
 
-        <div class="featured__item" id="bad" onclick="selectScore(-20)" style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
-
-            <div class="" data-setbg="img/featured/feature-2.jpg" style="margin: auto; background-image: url(/static/images/bad.png); background-color: fffef7; border-radius: 20px; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
-
-            </div>
+                    </div>
 
 
-            <div class="featured__item__text">
-                <h5>최악이에요</h5>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-lg-2 col-md-4 col-sm-6 mix" style="display: flex; justify-content: center; height: 180px; background-color:fffef7; border-radius: 20px;">
-        <div class="featured__item" id="soso" onclick="selectScore(0)" style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
-
-
-                <div class="" data-setbg="img/featured/feature-2.jpg" style="margin: auto; background-image: url(/static/images/not\ bad.png); background-color: fffef7; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
-
+                    <div class="featured__item__text">
+                        <h5>그저 그래요</h5>
+                    </div>
                 </div>
-                
-
-            <div class="featured__item__text">
-                <h5>그저 그래요</h5>
             </div>
-        </div>
-    </div>
 
 
-    <div class="col-lg-2 col-md-4 col-sm-6 mix" style="display: flex; justify-content: center; height: 180px; background-color: fffef7; border-radius: 20px;">
-        <div class="featured__item" id="good" onclick="selectScore(3)"" style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
+            <div class="col-lg-2 col-md-4 col-sm-6 mix"
+                style="display: flex; justify-content: center; height: 180px; background-color: fffef7; border-radius: 20px;">
+                <div class="featured__item" id="good" onclick="selectScore(3)"" style=" background-color: fffef7;
+                    height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
 
 
-                <div class="" data-setbg="img/featured/feature-2.jpg" style="margin: auto; background-image: url(/static/images/soso.png); background-color: fffef7; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
+                    <div class="" data-setbg="img/featured/feature-2.jpg"
+                        style="margin: auto; background-image: url(/static/images/good.png); background-color: fffef7; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
 
+                    </div>
+
+
+                    <div class="featured__item__text">
+                        <h5>좋아요</h5>
+                    </div>
                 </div>
-
-
-            <div class="featured__item__text">
-                <h5>좋아요</h5>
             </div>
-        </div>
-    </div>
 
 
-    <div class="col-lg-2 col-md-4 col-sm-6 mix" style="display: flex; justify-content: center; height: 180px; background-color: fffef7; border-radius: 20px;">
-        <div class="featured__item" id="excellent" onclick="selectScore(5)" style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
+            <div class="col-lg-2 col-md-4 col-sm-6 mix"
+                style="display: flex; justify-content: center; height: 180px; background-color: fffef7; border-radius: 20px;">
+                <div class="featured__item" id="excellent" onclick="selectScore(5)"
+                    style="background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;">
 
 
-            <div class="" data-setbg="img/featured/feature-2.jpg" style="margin: auto; background-image: url(/static/images/angel.png); background-color: fffef7; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
+                    <div class="" data-setbg="img/featured/feature-2.jpg"
+                        style="margin: auto; background-image: url(/static/images/ex.png); background-color: fffef7; background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat; margin-top: 10px;">
 
+                    </div>
+
+
+
+                    <div class="featured__item__text">
+                        <h5>최고에요!!</h5>
+                    </div>
                 </div>
-
-
-
-            <div class="featured__item__text">
-                <h5>최고에요!!</h5>
             </div>
+
         </div>
-    </div>
 
-</div>
+        <div style="background-color: #fffef7">
 
-<div style="background-color: #fffef7">
-
-<div class="row" id="check_list" style="margin-top: 20px;">
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-</div>
-</div>
-
-
-
-          <!--  -->
-        <div class="col-lg-12" style="display: flex; justify-content: center; margin-top: 10px;" >
-            <div class="col-lg-8" >
-                <textarea class="form-control" id="content" placeholder='내용을 입력해주세요. 최대 50자' name='content' rows="3"required></textarea>
-                <button onclick="reviewCreate()" type="button" class="btn btn-outline-success" style="position: absolute; right: 20px; margin-top: 10px; background-color:#8088ff; color: white; border: #8088ff">등록하기</button>
+            <div class="row" id="check_list" style="margin-top: 20px;">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
             </div>
         </div>
-        
-</div>
 
 
 
+        <!--  -->
+        <div class="col-lg-12" style="display: flex; justify-content: center; margin-top: 10px;">
+            <div class="col-lg-8">
+                <textarea class="form-control" id="content" placeholder='내용을 입력해주세요. 최대 30자' name='content' rows="3"
+                    required></textarea>
+                <button onclick="reviewCreate()" type="button" class="btn btn-outline-success"
+                    style="position: absolute; right: 20px; margin-top: 10px; background-color:#8088ff; color: white; border: #8088ff">등록하기</button>
+
+            </div>
+        </div>
+
+        </div>
+
+
+    </section>
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.nice-select.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+    <script src="/static/js/jquery.slicknav.js"></script>
+    <script src="/static/js/mixitup.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
     <script src="/static/js/review_seller.js"></script>
+    <script src="/static/js/nav.js"></script>
+
+    <script src="/static/js/main.js"></script>
+
 
 
 
