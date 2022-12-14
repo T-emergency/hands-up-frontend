@@ -1,4 +1,3 @@
-const hostUrl = "http://127.0.0.1:8000"
 $(document).ready(function() {
     const FLAG = localStorage.getItem("access", '')
     if(!FLAG){
@@ -67,8 +66,6 @@ $(document).ready(function () {
             url: `${hostUrl}/board/free_articles/${free_article_id}/comment/`,
             data: {},
             success: function (response) {
-                    console.log(response)
-                    console.log("아아")
                     let comments_count=response['count']
                     for (let i = 0; i < response['results'].length; i++) {
                         let content = response['results'][i]['content']
@@ -110,8 +107,7 @@ $(document).ready(function () {
                     }
                   })
                 }
-            
-            
+                
 // 댓글 페이지네이션
 
 function page(page) {
