@@ -1,5 +1,6 @@
 window.onload = function(){
     getInfo()
+    
 }
 
 $(document).ready(function(){
@@ -123,7 +124,7 @@ async function handleUpdate() {
 
         success: function (result) {
         alert("회원정보 변경완료.", result);
-        location.replace('http://127.0.0.1:5500/review/index.html')
+        moveProfile()
         },
         error : function(){
           alert("이미 사용 중인 아이디입니다.");
@@ -132,3 +133,19 @@ async function handleUpdate() {
         }
       );
     }
+
+
+function moveProfile(){
+    if(!payload){
+        needLogin()
+    }
+    return window.location.href = `/user/userProfile.html?user_id=${payload['user_id']}`
+}
+
+function needLogin(){
+    if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
+        return window.location.href = '/user/login.html'
+    }else{
+        return
+    }
+}

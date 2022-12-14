@@ -11,14 +11,15 @@
         formData.append("content", content)
         formData.append("title", title)
         const formFile = $("#img")[0];
+        console.log("폼파일")
+        console.log(formFile)
         if (formFile.files.length === 0) {
         } else {
-          formData.append("img", formFile.files[0]);
+          formData.append("image", formFile.files[0]);
         }
         console.log("제목",title)
         console.log("내용",content)
         console.log("폼데이터",formData)
-
     
         $.ajax({
     

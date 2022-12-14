@@ -17,20 +17,38 @@
         <!-- Css Styles -->
         <link rel="stylesheet" href="/static/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="/static/css/font-awesome.min.css" >
         <link rel="stylesheet" href="/static/css/elegant-icons.css" >
         <link rel="stylesheet" href="/static/css/nice-select.css" >
         <link rel="stylesheet" href="/static/css/jquery-ui.min.css" >
         <link rel="stylesheet" href="/static/css/owl.carousel.min.css" >
         <link rel="stylesheet" href="/static/css/slicknav.min.css" >
         <link rel="stylesheet" href="/static/css/style.css" >
-    
         <link rel="stylesheet" href="/static/css/all.min.css">
-    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     
         <style>
-    
+        .progress {
+
+        position: relative;
+        height: 15px;
+        border-radius: 7.5px;
+        }
+
+        .progress::after {
+        content: '\A';
+        position: absolute;
+        border-radius: 0 15px 15px 0;
+        /* background-color: var(--c); */
+        background: linear-gradient(to right, var(--c1), var(--c2));
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: var(--w);
+        /* Specify the width.. */
+        -webkit-animation: filler 1.5s ease-in-out;
+        -moz-animation: filler 1.5s ease-in-out;
+        animation: filler 1.5s ease-in-out;
+        }    
             .header__menu > ul >li{
                 margin: 0 10px;
             }
@@ -91,6 +109,7 @@
                 transition: all 0.2s linear;
                 border : 1px solid rgb(250, 206, 206);
                 border-radius: 10px;
+                margin-left: 20px;
 
             }
 
@@ -100,71 +119,100 @@
                 border-radius: 10px;
             }
             .item-text{
-                width: 100%;
-                
-                
+                width: 100%;  
             }
         </style>
     </head>
     
-    <body style="
+
+        <body style="
         background-color: #fffef7;
     " class="">
-        <!-- Page Preloder -->
-        <div id="preloder" style="display: none;">
-            <div class="loader" style="display: none;"></div>
-        </div>
-        <div id="nav-header"></div>
+    <!-- Page Preloder -->
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
+    <div id="nav-header"></div>
 
-    <!-- Featured Section Begin -->
-    <div class="list-wrap">
-    <section class="featured spad" >
-        <div class="container" style="margin-top: 30px;">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- 상품 배너 -->
-                    <!-- <div class="section-title">
-                        <h2></h2>
-                        <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/images/curated_contents/aswgr_curated_content_item_category_desktop_1021.png" alt="배너" class="css-7wh13m eove9sn2">
-                    </div> -->
 
-                    <!-- 프로필 사진. 프로필 페이지  -->
-                    <div class="profile-wrap">
-                        <div id = 'userdata'>
-                           
+
+    <main>
+        <!-- Featured Section Begin -->
+        <section class="featured spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!--  -->
+                        <div
+                            style="width:100%; display: flex; text-align: center; justify-content: center; margin-bottom: 30px; background-color: fffef7; border-radius: 20px;">
+                            <div style="padding: 20px 60px;">
+                                <div class="box" style="width: 175px; height: 175px;">
+
+                                    <img class="profile" id="profile_image" style="border-radius: 500px;">
+
+                                </div>
+                            </div>
+                            <div style="text-align: left; width: 300px;">
+                                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                                    <div style="font-size: 26px; margin-right: 40px; color: rgb(0, 0, 0);" id="username">
+
+
+                                    </div>
+
+                                </div>
+
+
+                                <div id="temp">
+
+                                </div>
+                            </div>
                         </div>
-                        <!-- 프로필 버튼 -->
-                        <a href="http://127.0.0.1:5501/review/my_review_profile.html" class="profile-atag"><div class="profile-bnt">프로필 보기</div></a>
-                    </div>
-                    
-                    <div class="featured__controls">
-                        <ul>
-                            <!-- <li class="active" data-filter="*">All</li> -->
-                            <li data-filter=".oranges" onclick="sellgoods()">판매상품</li>
-                            <li data-filter=".fresh-meat" onclick="buygoods()">구매상품</li>
-                            <li data-filter=".vegetables" onclick="likegoods()">관심상품</li>
-                            <!-- <li data-filter=".fastfood">Fastfood</li> -->
-                        </ul>
+                        <hr />
+                        <!-- <div class="section-title">
+                            <h2></h2>
+                            <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/images/curated_contents/aswgr_curated_content_item_category_desktop_1021.png"
+                                alt="배너" class="css-7wh13m eove9sn2">
+                        </div> -->
+                        <div class="container">
+
+                            <ul id="auction-status" class="row text-center" style="padding: 20px;margin: 0 0 20px;">
+                                <div class="col-md-4 col-6">
+                                    <li class="card" style="color: rgb(8, 156, 0); padding: 5px; cursor : pointer;"
+                                      onclick="filter('','sell','',)">
+                                      <i class="fas fa-coins"></i>
+                                    판매목록 
+                                    </li>
+                                </div>
+                                <div class="col-md-4 col-6">
+                                    <li class="card" style="color: #78d7ff; padding: 5px; cursor : pointer;" id="st-null"
+                                    onclick="filter('','buy','')">
+                                    <i class="fas fa-shopping-cart"></i>
+                                        구매목록
+                                    </li>
+                                </div>
+                                <div class="col-md-4 col-6">
+                                    <li class="card" style="color: rgb(255, 0, 0);padding: 5px;background-color: white; cursor : pointer;" id="st-true"
+                                    onclick="filter('','like','')">
+                                    <i class="fas fa-heart"></i>
+                                        좋아요
+                                    </li>
+                                </div>
+
+                                
+                            </ul>
+
+                            <div class="row" id="auction_list"></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
-                <!-- 이미지 리스트 들어가는 곳 -->
-                <div class="lists">
-                <div class="items" >
-                <div class="col-lg-9">
-                    <div class="row" id="item" style="margin-top:20px;">
-                        
-                        <!-- 상품 데이터 들어가는 곳 -->
-                    </div>
-                        <!-- lists end -->
-                    </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-</div>
+        </section>
+
+    </main>
+
+    <div id="endList" style="height: 40px;"></div>
+
     <!-- Featured Section End -->
 
 
@@ -178,9 +226,9 @@
     <script src="/static/js/jquery.nice-select.min.js"></script>
     <script src="/static/js/jquery-ui.min.js"></script>
     <script src="/static/js/jquery.slicknav.js"></script>
-    <script src="/static/js/mixitup.min.js"></script>
-    <script src="/static/js/owl.carousel.min.js"></script>
     <script src="/static/js/base.js"></script>
+    <!-- <script src="/static/js/mixitup.min.js"></script> -->
+    <script src="/static/js/owl.carousel.min.js"></script>
     <script src="/static/js/main.js"></script>
     <script src="/static/js/userProfile.js"></script>
 

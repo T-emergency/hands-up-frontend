@@ -28,12 +28,14 @@ function searchAuction2(){
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
+
 function priceToString(price) {
     if (price === null){
         return null
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
 
 function needLogin(){
     if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
@@ -43,15 +45,24 @@ function needLogin(){
     }
 }
 
+
+function moveAuction(){
+    if(!payload){
+        needLogin()
+    }
+    return window.location.href = `/goods/index.html`
+}
+
+
 function moveProfile(){
     if(!payload){
         needLogin()
     }
-    return window.location.href = `/review/index.html?user_id=${payload['user_id']}`
+    return window.location.href = `/user/userProfile.html?user_id=${payload['user_id']}`
 }
 
 
-function moveCaht(){
+function moveChat(){
     if(!payload){
         needLogin()
     }
@@ -59,13 +70,23 @@ function moveCaht(){
 }
 
 
+if(!payload){
+    var login_temp = `
+        <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
+    `
+}else{
+    var login_temp = `
+        <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
+    ` 
+}
+
 
 document.getElementById('nav-header').innerHTML = `
 <div class="humberger__menu__overlay" style="z-index: 995;"></div>
     <div class="humberger__menu__wrapper" style="z-index: 999;">
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                ${login_temp}
             </div>
         </div>
         <div id="mobile-menu-wrap">
@@ -154,10 +175,10 @@ document.getElementById('nav-header').innerHTML = `
 
                     <div class="header__cart">
                         <ul>
+                            <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
+
                             <li style='cursor:pointer;' onclick='moveProfile()'><i class="fa fa-user"></i></li>
                             <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
-                            <li style='cursor:pointer;' onclick='moveProfile()'>
-                                <i class="fas fa-heart"></i>
                             </li>
                             <li style='cursor:pointer;' onclick='moveChat()'>
                                 <i class="fas fa-comment-dots"></i>
@@ -173,3 +194,18 @@ document.getElementById('nav-header').innerHTML = `
     </header>
     <!-- Header Section End -->
 `
+<<<<<<< HEAD
+=======
+
+document.querySelector('#search-input').onkeyup = function (e) {
+    if (e.keyCode === 13) {  // enter, return
+        searchAuction(false)
+    }
+};
+
+document.querySelector('#search-input-2').onkeyup = function (e) {
+    if (e.keyCode === 13) {  // enter, return
+        searchAuction2(false)
+    }
+};
+>>>>>>> e9db9a883bdd1f3ad46ac04b9cebe6774075d8c1

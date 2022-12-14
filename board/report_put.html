@@ -19,17 +19,13 @@
   <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/static/css/slicknav.min.css">
   <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="stylesheet" href="/static/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <!-- bootstrap css cdn -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
 
   <!-- JS 파일 -->
-  <script src="/static/js/bootstrap.bundle.min.js?after"></script>
-  <script src="/static/js/report_create.js?after"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="/static/js/bootstrap.bundle.min.js"></script>
   <script src="/static/js/report_article_put.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
@@ -141,27 +137,20 @@
 
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label"></label>
-              <input type="text" class="form-control" id="title" placeholder='제목을 입력해주세요. 최대 40자' name='title' type="required">
+              <input type="text" class="form-control" id="report_title" placeholder='제목을 입력해주세요. 최대 40자' name='title' type="required" value="">
             </div>
-
-            
-            
-
-          </form>
-
-
 
 
             <div class="mb-3">
               <label for="formFile" class="form-label"></label>
-              <input class="form-control" type="file" id="img" name="img" >
+              <input class="form-control" type="file" id="img" name="img">
             </div>
   
 
   
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-              <textarea class="form-control" id="content" placeholder='내용을 입력해주세요. 최대 200자' name='content' rows="12"required></textarea>
+              <textarea class="form-control" id="report_content" placeholder='내용을 입력해주세요. 최대 200자' name='content' rows="12"required></textarea>
             </div>
 
             <div>

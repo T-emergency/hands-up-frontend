@@ -1,5 +1,5 @@
+const hostUrl = "http://127.0.0.1:8000"
 let post_id=localStorage.getItem('community_post_id')
-consol.log(post_id)
 
 window.onload = function(){
     post_change_get()
@@ -16,44 +16,46 @@ function post_change_get(){
         console.log(response)
         let title = response['title']
         let content = response['content']
-        let img = response['img']
-        let category = response['category']
-
-        console.log(title, content)
-        console.log(category)
-
-        let temp_html_title=`
-        <label for="exampleFormControlInput1" class="form-label"></label>
-        <input type="text" class="form-control" id="title" name='title' required value="${title}">
-        `
-        $('#post-title').append(temp_html_title)
+        let img = response['image']
+        console.log
+        // var str = document.getElementById("textarea").value;
+        // str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        
+        $('#report_title').val(title)
         $('#img').attr('src', img)
-        $('#category').empty()
-        $('#category').append(`${category}`)
+        $('#report_content').html(content)
+        
+        
+        // let temp_html_title=`
+        // <label for="exampleFormControlInput1" class="form-label"></label>
+        // <input type="text" class="form-control" id="title" name='title' required value="${title}">
+        // `
+        // $('#report-title').append(temp_html_title)
+        // $('#img').attr('src', img)
 
-        let temp_html_content =`
-        <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-              <textarea class="form-control" id="content" name='content' rows="12"required>${content}</textarea>
-        `
-        $('#post-content').append(temp_html_content)
+        // let temp_html_content =`
+        // <label for="exampleFormControlTextarea1" class="form-labe2"></label>
+        //       <textarea class="form-control" id="content" name='content' rows="12"required>${content}</textarea>
+        // `
+        // $('#report-content').append(temp_html_content)
 
         }
-    })
+    });
 }
 
 
 function post_put() {
-    let content = $("#content").val()
-    let title = $("#title").val()
+    let content = $("#report_content").val()
+    let title = $("#report_title").val()
     let formData = new FormData();
 
-    // formData.append("img", $("#img")[0].files[0]);
+    formData.append("img", $("#img")[0].files[0]);
     formData.append("content", content)
     formData.append("title", title)
     const formFile = $("#img")[0];
     if (formFile.files.length === 0) {
     } else {
-      formData.append("img", formFile.files[0]);
+      formData.append("image", formFile.files[0]);
     };
     console.log("제목",title)
     console.log("내용",content)

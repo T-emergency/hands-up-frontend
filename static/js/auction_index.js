@@ -231,6 +231,7 @@ function filter(c='', gs='', sr=''){
         $('#auction_list').empty()
         $(`#ct-${prevCategory}`).removeClass('active')
         $(`#ct-${CATEGORY[c]}`).addClass('active')
+        $('#search-result').hide()
     }else if (gs !== ''){
         nowPage = 1
         gs !=='all'?goodsStatus = gs: goodsStatus=''

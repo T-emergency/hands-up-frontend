@@ -13,7 +13,6 @@ if (goodsId != null) {
         'ws://' + backUrl +
         '/chat/' + goodsId + '/?token=' + token);
 
-
     console.log(chatSocket)
 
     chatSocket.onopen = function (e) {
@@ -161,14 +160,14 @@ function select_chat_roome() {
                 if (payload['username'] == buyer) {
                     let temp_html = `
                         <div style="background-color: white">
-                        <a href="javascript:getChatRomm(${goods_id})">판매자: ${seller}</a>
+                        <a href="javascript:getChatRoom(${goods_id})">판매자: ${seller}</a>
                         </div>
                     `
                     $("#chat-list").append(temp_html)
                 } else if (payload['username'] == seller) {
                     let temp_html = `
                         <div style="background-color: green">
-                        <a href="javascript:getChatRomm(${goods_id})">구매자: ${buyer}</a>
+                        <a href="javascript:getChatRoom(${goods_id})">구매자: ${buyer}</a>
                         </div>
                     `
                     $("#chat-list").append(temp_html)
@@ -176,11 +175,13 @@ function select_chat_roome() {
 
 
             }
+
+
         },
     });
 }
 
-function getChatRomm(goods_id) {
+function getChatRoom(goods_id) {
     window.location.href = `index.html?goods=${goods_id}`
     return
 }

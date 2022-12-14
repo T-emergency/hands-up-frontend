@@ -3,7 +3,6 @@ async function handleLogin() {
     const phone = document.getElementById("phone").value
     const password = document.getElementById("password").value
 
-    console.log(phone, password)
     const response = await fetch('http://127.0.0.1:8000/user/api/token/', {
         headers: {
             'content-type': 'application/json',

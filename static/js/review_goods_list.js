@@ -1,13 +1,11 @@
-let data_auction_list
-$(document).ready(function () {
-    data_auction_list = get_auction_list()
-    userInfo()
-});
+var data_auction_list = get_auction_list()
+var user_id = url.searchParams.get('user_id')
 
-var user_id = url.searchParams('user_id')
 
+userInfo()
 
 function userInfo() {
+
     $.ajax({
         type: 'GET',
 
@@ -16,38 +14,41 @@ function userInfo() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/review/list/${user_id}/`,
+        url: `http://127.0.0.1:8000/user/info/${user_id}`,
 
         success: function (response) {
             console.log('성공:', response);
-            let profile_image = response['receiver']['profile_image']
-            let username = response['receiver']['username']
-            let temperature = response['receiver']['rating_score']
+            let profile_image = response['profile_image']
+            let username = response['username']
+            temperature=response['rating_score']
+            if(response['rating_score'] > 99)
+            {
+            temperature=99
+            }
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
-            let is_active = response['receiver']['is_active']
+            let is_active = response['is_active']
+            let id = response['id']
 
-            let temper_bad_user = `
-                <div>
-                <div class="progress" max=100 "></div>
-
-                <div style="color:white">
-                <span class='text-secondary small' style="color : white; width:50px">매너점수</span> 0
-                </div>
-
-                </div>
-                <br>
-
-            `
             let bad_user = `
                 <div style="background-color:#c00000; height:70px; display: flex; justify-content: center; align-items: center; font-weight: bolder;">
                     <div >
                         현재 비매너 사유로 이용정지 중입니다.
                     </div>
                 </div>
+                `
+            let temperature_bad_user = `
+                <div>
+                <div class="progress" max=100 "></div>
+                <div style="color:white">
+                <span class='text-secondary small' style="color : white; width:50px">매너점수</span> 0
+                </div>
+                </div>
+                <br>
+                <div class="row" style="display:felx;" id="profile_btn">
+                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                </div>
             `
-            if (is_active == true && temperature > 0) {
-                $('#temp').append(
-                    `
+            let temperature_good_user=`
                         <div>
                         <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                         <div style="color : white;">
@@ -55,14 +56,17 @@ function userInfo() {
                         </div>
                         </div>
                         <br>
-
+                        <div class="row" style="display:felx;" id="profile_btn">
+                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                        </div>
                     `
-                )
+            if (is_active == true && temperature > 0) {
+                $('#temp').append(temperature_good_user)
             } else if (is_active == true && temperature <= 0) {
-                $('#temp').append(temper_bad_user)
+                $('#temp').append(temperature_bad_user)
             } else if (is_active == false) {
                 $('#bad_user').append(bad_user)
-                $('#temp').append(temper_bad_user)
+                $('#temp').append(temperature_bad_user)
             }
 
             if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
@@ -71,6 +75,11 @@ function userInfo() {
         }
     })
 }
+
+function review(id) {
+    location.href = `/review/index.html?user_id=${id}`
+}
+
 const listEnd = document.getElementById('endList');
 const option = {
     root: null,
@@ -101,20 +110,17 @@ var search = search === null || search === undefined? search ='': search = searc
 
 
 function get_auction_list() {
-    let temp_response
     $.ajax({
         type: "GET",
-        url: `${hostUrl}/goods/user/1/?page=${nowPage}&category=${category}&status=${goodsStatus}&search=${search}`,
+        url: `${hostUrl}/goods/user/${user_id}/?page=${nowPage}&status=${goodsStatus}`,
         headers: {
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + localStorage.getItem("access"),
         },
         data: {},
         async: false,
         success: function (response) {
-
+            console.log(`${hostUrl}/goods/user/1/?page=${nowPage}&status=${goodsStatus}`)
             let auction_list = response
-            temp_response = auction_list
-            console.log("욕",response)
             for (let i = 0; i < auction_list.length; i++) {
 
                 let price 
@@ -233,15 +239,6 @@ function get_auction_list() {
                 $('#auction_list').append(temp_html)
 
             }
-            console.log(search, '나 서치', !search)
-            if(search){
-                
-                $('#search-result').text(`"${search}"에 대한 결과`)
-                $('#search-result').show()
-
-            }
-
-
             nowPage += 1
         },
         error : function(error){
@@ -254,7 +251,7 @@ function get_auction_list() {
             $('#endList').html(temp)
         }
     })
-    return temp_response
+    return
 }
 
 

@@ -33,27 +33,32 @@
         .header__menu>ul>li {
             margin: 0 10px;
         }
+
         .progress {
 
-        position: relative;
-        height: 15px;
-        border-radius: 7.5px;
+            position: relative;
+            height: 15px;
+            border-radius: 7.5px;
         }
 
         .progress::after {
-        content: '\A';
-        position: absolute;
-        border-radius: 0 15px 15px 0;
-        /* background-color: var(--c); */
-        background: linear-gradient(to right, var(--c1), var(--c2));
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: var(--w);
-        /* Specify the width.. */
-        -webkit-animation: filler 1.5s ease-in-out;
-        -moz-animation: filler 1.5s ease-in-out;
-        animation: filler 1.5s ease-in-out;
+            content: '\A';
+            position: absolute;
+            border-radius: 0 15px 15px 0;
+            /* background-color: var(--c); */
+            background: linear-gradient(to right, var(--c1), var(--c2));
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: var(--w);
+            /* Specify the width.. */
+            -webkit-animation: filler 1.5s ease-in-out;
+            -moz-animation: filler 1.5s ease-in-out;
+            animation: filler 1.5s ease-in-out;
+        }
+        #auction-status>div{
+            padding: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -66,7 +71,7 @@
         <div class="loader" style="display: none;"></div>
     </div>
     <div id="nav-header"></div>
-    
+
 
 
     <main>
@@ -77,85 +82,73 @@
                     <div class="col-lg-12">
                         <!--  -->
                         <div
-                        style="width:100%; display: flex; text-align: center; justify-content: center; margin-bottom: 30px; background-color: fffef7; border-radius: 20px;">
-                        <div style="padding: 20px 60px;">
-                            <div class="box" style="width: 175px; height: 175px;">
+                            style="width:100%; display: flex; text-align: center; justify-content: center; margin-bottom: 30px; background-color: fffef7; border-radius: 20px;">
+                            <div style="padding: 20px 60px;">
+                                <div class="box" style="width: 175px; height: 175px;">
 
-                                <img class="profile" id="profile_image" style="border-radius: 500px;">
+                                    <img class="profile" id="profile_image" style="border-radius: 500px;">
 
+                                </div>
                             </div>
-                        </div>
-                        <div style="text-align: left; width: 300px;">
-                            <div style="display: flex; flex-direction: row; margin: 20px 0">
-                                <div style="font-size: 26px; margin-right: 40px; color: white;" id="username">
+                            <div style="text-align: left; width: 300px;">
+                                <div style="display: flex; flex-direction: row; margin: 20px 0">
+                                    <div style="font-size: 26px; margin-right: 40px; color: white;" id="username">
 
+
+                                    </div>
 
                                 </div>
 
-                            </div>
 
+                                <div id="temp">
 
-                            <div id="temp">
-
+                                </div>
                             </div>
                         </div>
-                    </div>
-                        
+
                         <!-- <div class="section-title">
                             <h2></h2>
                             <img src="https://d2v80xjmx68n4w.cloudfront.net/assets/images/curated_contents/aswgr_curated_content_item_category_desktop_1021.png"
                                 alt="배너" class="css-7wh13m eove9sn2">
                         </div> -->
                         <div class="container">
-                            <div class="hero__categories" style="margin-bottom: 60px;">
-                                <div class="hero__categories__all" style="background-color: #ffd700;">
-                                    <i style="color: #24210b;" class="fa fa-bars"></i>
-                                    <span style="color: #24210b;">카테고리</span>
-                                </div>
 
-                                <ul style="margin-left: 0px; display: none; background-color: #24210b;">
-                                    <li style="background-color: white; cursor : pointer;" id="st-" onclick="filter('','all','')">전체</li>
-                                    <li style="background-color: white; cursor : pointer;" id="st-true" onclick="filter('',true,'')">
+                            <ul id="auction-status" class="row text-center" style="padding: 20px;margin: 0 0 20px;">
+                                <div class="col-md-3 col-6">
+                                    <li class="card" style="color: rgb(50, 158, 0); padding: 5px;" onclick="filter('','all','')">
+                                        <i class="fas fa-globe-asia"></i>
+                                        전체
+                                    </li>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <li class="card" style="color: rgb(255, 154, 22);padding: 5px;background-color: white; cursor : pointer;" id="st-true"
+                                    onclick="filter('',true,'')">
                                         <i class="fas fa-fire-alt"></i>
                                         경매중
                                     </li>
-                                    <li style="background-color: white; cursor : pointer;" id="st-null" onclick="filter('',null,'')">경매전</li>
-                                    <li style="background-color: white; cursor : pointer;" id="st-false" onclick="filter('',false,'')">경매종료</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row featured__filter" id="MixItUpA54EF9">
-                    <!-- <div class="col-lg-3">
-                        <div class="hero__categories">
-                            <div class="hero__categories__all" style="background-color: #fe83a5;">
-                                <i class="fa fa-bars"></i>
-                                <span>카테고리</span>
-                            </div>
-                            <ul>
-                                <li><a href="#">디지털기기</a></li>
-                                <li><a href="#">생활가전</a></li>
-                                <li><a href="#">가구 &amp; 인테리어</a></li>
-                                <li><a href="#">생활 &amp; 주방</a></li>
-                                <li><a href="#">유아</a></li>
-                                <li><a href="#">여성 의류</a></li>
-                                <li><a href="#">남성 의류</a></li>
-                                <li><a href="#">스포츠</a></li>
-                                <li><a href="#">반려동물 용품</a></li>
-                                <li><a href="#">기타</a></li>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <li class="card" style="color: #78d7ff; padding: 5px;" id="st-null"
+                                    onclick="filter('',null,'')">
+                                        <i class="fas fa-clock"></i>
+                                        경매전
+                                    </li>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <li class="card" style="color: rgb(145, 145, 145); padding: 5px;" id="st-false"
+                                    onclick="filter('',false,'')">
+                                        <i class="fas fa-stop"></i>
+                                        경매종료
+                                    </li>
+                                </div>
+                                
                             </ul>
-                        </div>
-                    </div> -->
-                    <div class="col-lg-12">
-                        <div id="search-result" style="color: white; margin-bottom: 40px; display: none; font-size: 30px; font-weight: 600;">
-                            ""에 대한 검색 결과
-                        </div>
-                        <div class="row" id="auction_list">
-                
+
+                            <div class="row" id="auction_list"></div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -176,9 +169,9 @@
     <script src="/static/js/jquery.nice-select.min.js"></script>
     <script src="/static/js/jquery-ui.min.js"></script>
     <script src="/static/js/jquery.slicknav.js"></script>
+    <script src="/static/js/base.js"></script>
     <!-- <script src="/static/js/mixitup.min.js"></script> -->
     <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/base.js"></script>
     <script src="/static/js/main.js"></script>
     <script src="/static/js/review_goods_list.js"></script>
 

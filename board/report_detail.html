@@ -24,6 +24,7 @@
   <!-- Google Font -->
   <link href="" rel="stylesheet">
   <!-- JS 파일 -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="/static/js/report_detail.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
@@ -79,7 +80,7 @@
       </div>
   </div>
   <haed>
-<header class="header" style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: fixed; z-index: 99; width: 100%; color: white;">
+<header class="header" style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: fixed; z-index: 99; width: 100%; color: white; top: 0px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
@@ -125,19 +126,16 @@
   
       </header>
   
-      <main class="container" style="height: 900px; margin-top : 90px;">
+      <main class="container" style="height: 900px; margin-top : 150px;">
 
         <!-- 제목 -->
-          <h1 class='contents' style="text-align :left; font-size: 45px; background-color: #ffffff;" id="title"> </h1>
+          <h1 class='contents' style="text-align :left; font-size: 45px; background-color: #fcc5c5; margin-top: 150px; "  id="title"> </h1>
         <!-- 작성자 -->
-          <div style="display: flex; text-align: right; margin-top: 150px;" >
+          <div style="display: flex; text-align: right; margin-top: 15px;" >
             <h3 class='contents' style="text-align :right; font-size: 15px;" id="user">작성자 </h1>
           </div>
         <!-- 게시글 조회수 댓글수 좋아요수 -->
         <div style="text-align: right; display: flex;" >
-            <h1 class='contents' style="text-align :right; font-size: 12px;" id="hits">조회수 </h1>
-            <h1 class='contents' style="text-align :right; font-size: 12px;" id="likes_count">좋아요 </h1>
-            <h1 class='contents' style="text-align :right; font-size: 12px;" id="comments_count">댓글수 </h1>
         </div>
         <!-- line -->
         <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">
@@ -157,7 +155,7 @@
               <!-- 게시글 옵션 -->
               <div class="mb-3" style="margin-top: 20px;">
                 <div style="margin-left: 85%;">
-                    <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="comment_put_submit()">수정</button>
+                    <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="article_put_submit()">수정</button>
                     <button id="delete_submit" type="button" class="btn btn-outline-danger" onclick="post_delete_submit()" >삭제</button>
                 </div>
               <!-- 구분선 -->
@@ -171,8 +169,8 @@
               <!-- 댓글 페이지네이션 -->
               <nav aria-label="Page navigation example" style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
                 <ul class="pagination">
-                  <a onclick="" id="previous" class="page-link" href="#">이전</a>
-                  <a onclick="" id="next" class="page-link" href="#">다음</a>
+                  <a type ="button" onclick="" id="previous" class="page-link">이전</a>
+                  <a type ="button" onclick="" id="next" class="page-link" >다음</a>
                 </ul>
               </nav>
 
