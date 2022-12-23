@@ -248,7 +248,6 @@ document.getElementById('nav-header').innerHTML = `
                                     z-index: 1;"
                                     
                                     id="dr_menu">
-                                        
                                      ${drop_menu}
                                     </ul> 
 
