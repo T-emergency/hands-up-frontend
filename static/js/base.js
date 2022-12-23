@@ -1,12 +1,12 @@
-// 서버용
-const hostUrl = "http://backend.hands-up.co.kr"
-const backUrl = '43.200.179.49';
-const domain = '43.200.179.49'
+// // 서버용
+// const hostUrl = "http://backend.hands-up.co.kr"
+// const backUrl = '43.200.179.49';
+// const domain = '43.200.179.49'
 
-// // 로컬용
-// const hostUrl = "http://127.0.0.1:8000"
-// const backUrl = '127.0.0.1:8000';
-// const domain = '127.0.0.1:8000';
+// 로컬용
+const hostUrl = "http://127.0.0.1:8000"
+const backUrl = '127.0.0.1:8000';
+const domain = '127.0.0.1:8000';
 
 const token = localStorage.getItem('access')
 const payload = JSON.parse(localStorage.getItem('payload', ''))
@@ -91,6 +91,26 @@ if (!payload) {
     `
 }
 
+// 로그인 시 로그아웃 보이기
+if(payload){
+    var logout_temp=`<div><span style="cursor:pointer" onclick="handleLogout()">로그아웃</span></div>`
+} else {
+    var logout_temp = `<div></div>`
+}
+
+//로그인 시 프로필 눌리기
+if(payload){
+    var drop_menu =`
+    <li onclick='moveProfile()'><a style="color:black; font-size:15px;" href="#">프로필</a></li>
+    <li onclick="handleLogout()"><a style="color:black;font-size:15px; " href="#">로그아웃</a></li>
+    `
+} else {
+    var drop_menu =`
+    <div></div>
+    `
+}
+
+
 async function handleLogout() {
 
     localStorage.removeItem("access")
@@ -130,7 +150,7 @@ document.getElementById('nav-header').innerHTML = `
                 ${login_temp}
             </div>
             <br>
-            <div><span style="cursor:pointer" onclick="handleLogout()">로그아웃</span></div>
+            ${logout_temp}
         </div>
         
         <div id="mobile-menu-wrap">
@@ -228,8 +248,8 @@ document.getElementById('nav-header').innerHTML = `
                                     z-index: 1;"
                                     
                                     id="dr_menu">
-                                        <li onclick='moveProfile()'><a style="color:black; font-size:15px;" href="#">프로필</a></li>
-                                        <li onclick="handleLogout()"><a style="color:black;font-size:15px; " href="#">로그아웃</a></li>
+                                        
+                                     ${drop_menu}
                                     </ul> 
 
                                 <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->

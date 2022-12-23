@@ -7,7 +7,7 @@ function free_article_create() {
     let title 
     title = $("#title").val();
     title = filterXSS(title)
-    alert(title)
+  
 
     let formData = new FormData();
     formData.append("content", content)
