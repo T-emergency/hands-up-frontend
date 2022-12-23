@@ -172,6 +172,13 @@
         <div class="loader" style="display: none;"></div>
     </div>
     <div id="nav-header"></div>
+    <div id="alram-section">
+        <div id="alram-clear" style="position: absolute; right: 0;">
+            <button style="background-color: #000; color:white;border: 1px solid black; border-radius: 4px; padding: 3px;" onclick="alramClear()">
+                <b>All Clear</b>
+            </button>
+        </div>
+    </div>
 
     <div class="container mt-3 p-0">
         <div class="row">
@@ -192,11 +199,9 @@
                 <div style="width: 100%; height: 70vh; ">
                     <!-- <div id="review-btn" style="display: flex; justify-content: end">
             </div> -->
-                    <div
-                        style="margin-top: 2px; margin-bottom: 1px; min-height: 50px; height: 4vh; background-color: white; border-radius: 15px 15px 0 0; box-shadow: 0px 0px 5px #000; display: flex;flex-direction: row; justify-content: center;align-items: center;">
-                        <button
-                            style="color: white; border: hidden; background-color : #24210b; font-weight: bolder; border-radius : 15px; width:150px; height:40px; text-align:center; margin: 5px;"
-                            onclick="review()">후기 작성하기</button>
+                    <div id="review-info" class="text-start"
+                        style="min-height: 80px; padding: 10px; height: 4vh; background-color: white; border-radius: 15px 15px 0 0; box-shadow: 0px 0px 5px #000;">
+                        
                     </div>
                     <div id="chatLog" style="width: 100%; height: 60vh; border-radius: 0 0 15px 15px;"></div>
                     <div style="display: flex; justify-content: center; width: 100%; height: 5vh;">

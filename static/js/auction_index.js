@@ -10,13 +10,13 @@ const option = {
     rootMargin: "0px 0px 0px 0px",
     thredhold: 0,
 }
-const onIntersect = (entries, observer) => { 
-    console.log(entries, observer)
+const onIntersect = (entries, observer) => {
+    // console.log(entries, observer)
     // entries는 IntersectionObserverEntry 객체의 리스트로 배열 형식을 반환합니다.
     entries.forEach(entry => {
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
             get_auction_list()
-            console.log('ddd')
+            // console.log('ddd')
         }
     });
 };
@@ -31,11 +31,11 @@ var goodsStatus = ''
 var isNull = ''
 var search = url.searchParams.get('search')
 var category = url.searchParams.get('category')
-var search = search === null || search === undefined? search ='': search = search
+var search = search === null || search === undefined ? search = '' : search = search
 
-if(!category){
+if (!category) {
     category = ''
-}else{
+} else {
     $(`#ct-${CATEGORY[category]}`).addClass('active')
 }
 
@@ -56,7 +56,7 @@ function get_auction_list() {
 
             for (let i = 0; i < auction_list.length; i++) {
 
-                let price 
+                let price
                 let banner
                 let high_price
                 let participants
@@ -65,7 +65,7 @@ function get_auction_list() {
                 let is_like = auction_list[i]['is_like']
                 let auction_status = auction_list[i]['status']
                 let image = auction_list[i]['images']?.image
-                let time = auction_list[i]['start_time'].slice(0,2) + '시' + ' ' +  auction_list[i]['start_time'].slice(3,)+'분'
+                let time = auction_list[i]['start_time'].slice(0, 2) + '시' + ' ' + auction_list[i]['start_time'].slice(3,) + '분'
                 let startTime = auction_list[i]['start_date'].split('-').slice(1,).join('/') + ' ' + time + ' 오픈!'
 
                 var now = new Date();
@@ -73,7 +73,7 @@ function get_auction_list() {
 
                 open.setMinutes(open.getMinutes() + 20);
                 let rt = open - now
-                rt = parseInt(rt/(1000*60))
+                rt = parseInt(rt / (1000 * 60))
 
 
                 if (auction_status == null) {
@@ -91,12 +91,12 @@ function get_auction_list() {
                         </span>
                     </div>
                     `
-                    
+
                 } else if (auction_status == true) {
                     auction_status = "started-auction";
                     var hp = priceToString(auction_list[i]['high_price'])
                     var sp = priceToString(auction_list[i]["start_price"])
-                    high_price = auction_list[i]["high_price"] === 0 || ! auction_list[i]["high_price"]? sp +'원': hp + '원';
+                    high_price = auction_list[i]["high_price"] === 0 || !auction_list[i]["high_price"] ? sp + '원' : hp + '원';
                     banner = `<span style="padding : 4px; border-radius:10px;background-color:#ffd700; color:black;">경매 ${rt}분 남았어요!<span>`
                     participants = `
                     <div style="background-color:black; border-radius : 10px; padding:3px;">
@@ -107,7 +107,7 @@ function get_auction_list() {
                         </span>
                     </div>
                     `
-                    
+
                     price = `
                     <div>
                         <span style="font-size : 19px; font-weight:700;">
@@ -134,16 +134,16 @@ function get_auction_list() {
                         </span>
                     </h5>
                     `
-                    
+
                 };
-                if(is_like){
-                    heart= `
+                if (is_like) {
+                    heart = `
                     <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
                         <i id="heart-${goods_id}" class="fas fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                     </div>
                     `
-                }else{
-                    heart=`
+                } else {
+                    heart = `
                     <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
                         <i id="heart-${goods_id}" class="far fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                     </div>
@@ -176,9 +176,9 @@ function get_auction_list() {
                 $('#auction_list').append(temp_html)
 
             }
-            console.log(search, '나 서치', !search)
-            if(search){
-                
+            // console.log(search, '나 서치', !search)
+            if (search) {
+
                 $('#search-result').text(`"${search}"에 대한 결과`)
                 $('#search-result').show()
 
@@ -187,11 +187,11 @@ function get_auction_list() {
 
             nowPage += 1
         },
-        error : function(error){
-            if(error.status === 401){
-                if(confirm('로그인이 만료 됐어요. 로그인하시겠어요?')){
+        error: function (error) {
+            if (error.status === 401) {
+                if (confirm('로그인이 만료 됐어요. 로그인하시겠어요?')) {
                     window.location.href = '/user/login.html'
-                }else{
+                } else {
                     localStorage.removeItem("access")
                     localStorage.removeItem("refresh")
                     localStorage.removeItem("payload")
@@ -214,27 +214,27 @@ function get_auction_list() {
 }
 
 
-function filter(c='', gs='', sr=''){
+function filter(c = '', gs = '', sr = '') {
     var prevCategory = CATEGORY[category]
     var prevStatus = goodsStatus
     // var nowStatus = 
-    if(sr !== ''){
+    if (sr !== '') {
         nowPage = 1
         search = sr
         category = '';
         gs = '';
         $('#auction_list').empty()
-    }else if (c !== ''){
+    } else if (c !== '') {
         nowPage = 1;
-        c!== 'all' ? category=c : category=''
+        c !== 'all' ? category = c : category = ''
         search = '';
         $('#auction_list').empty()
         $(`#ct-${prevCategory}`).removeClass('active')
         $(`#ct-${CATEGORY[c]}`).addClass('active')
         $('#search-result').hide()
-    }else if (gs !== ''){
+    } else if (gs !== '') {
         nowPage = 1
-        gs !=='all'?goodsStatus = gs: goodsStatus=''
+        gs !== 'all' ? goodsStatus = gs : goodsStatus = ''
         $('#auction_list').empty()
         $(`#st-${prevStatus}`).removeClass('active')
         $(`#st-${goodsStatus}`).addClass('active')
@@ -289,9 +289,9 @@ async function remaindTime() {
             $(`.time-${id}`).fadeIn();
             // $(`p.time-title-${id}`).html("경매 남은 시간");
             sec = parseInt(et - nt)
-            console.log("sec:", sec)
+            // console.log("sec:", sec)
             sec = parseInt(et - nt) / 1000;
-            console.log("sec:", sec)
+            // console.log("sec:", sec)
             day = parseInt(sec / 60 / 60 / 24);
             sec = (sec - (day * 60 * 60 * 24));
 

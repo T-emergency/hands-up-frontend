@@ -1,6 +1,6 @@
 window.onload = function () {
     review_list()
-    
+
 }
 
 
@@ -8,7 +8,7 @@ window.onload = function () {
 // var token = localStorage.getItem('access')
 
 function review_list() {
-    console.log('정보 불러오기 성공')
+    // console.log('정보 불러오기 성공')
     let storage = localStorage.getItem('payload')
     const user = JSON.parse(storage)
 
@@ -24,7 +24,7 @@ function review_list() {
         url: `${hostUrl}/user/${user_id}/profile/`,
 
         success: function (response) {
-            console.log('성공:', response);
+            // console.log('성공:', response);
             let profile_image = response['receiver']['profile_image']
             let bad_review_count = response['bad_review_count']
             let soso_review_count = response['soso_review_count']
@@ -35,7 +35,7 @@ function review_list() {
             let id = response['receiver']['id']
             let is_active = response['receiver']['is_active']
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
-            console.log(temperature)
+            // console.log(temperature)
 
             if (response['results'].length > 0) {
                 for (let i = 0; i < response['results'].length; i++) {

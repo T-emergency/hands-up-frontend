@@ -27,13 +27,13 @@ function review_list() {
                     let content = response['results'][i]['content']
                     let created_at = response['results'][i]['created_at']
                     // let review_image = response['review_image'][i]
-                    
+
                     temp_html = `
                     <div class="col-lg-4 col-md-6 col-sm-8" style="margin-top: 10px;>
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="${hostUrl}/media/media/default.jpeg/" id="image2" style="width:30px; border-radius:50%;">
+                                    <img src="${hostUrl}/media/default.jpeg" id="image2" style="width:30px; border-radius:50%;">
                                     <strong class="me-auto" style="position:absolute; left: 50px;">익명</strong>
                                     <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
@@ -47,39 +47,39 @@ function review_list() {
                     $('#review_list').append(temp_html)
                 }
             }
-            
-            let bad_score=`
+
+            let bad_score = `
             <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${bad_review_count}</span>
             `
-            let soso_score=`
+            let soso_score = `
             <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${soso_review_count}</span>
             `
-            let good_score=`
+            let good_score = `
             <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${good_review_count}</span>
             `
-            let excellent_score=`
+            let excellent_score = `
             <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${excellent_review_count}</span>
             `
 
-            if (bad_review_count > 0){
-            $('#bad_score').append(bad_score);
+            if (bad_review_count > 0) {
+                $('#bad_score').append(bad_score);
             }
-            if (soso_review_count > 0){
+            if (soso_review_count > 0) {
 
-            $('#soso_score').append(soso_score);
-            }
-
-            if (good_review_count > 0){
-            $('#good_score').append(good_score);
+                $('#soso_score').append(soso_score);
             }
 
-            if (excellent_review_count > 0){
-            console.log(excellent_review_count)
-            $('#excellent_score').append(excellent_score);
+            if (good_review_count > 0) {
+                $('#good_score').append(good_score);
+            }
+
+            if (excellent_review_count > 0) {
+                // console.log(excellent_review_count)
+                $('#excellent_score').append(excellent_score);
             }
 
             $("time.timeago").timeago();
@@ -101,13 +101,12 @@ function userInfo() {
         url: `${hostUrl}/user/info/${user_id}/`,
 
         success: function (response) {
-            console.log('성공:', response);
+            // console.log('성공:', response);
             let profile_image = response['profile_image']
             let username = response['username']
-            temperature= response['rating_score']<0 || response['rating_score']>100? 99 : response['rating_score']
-            if(response['rating_score'] > 99)
-            {
-            temperature=99
+            temperature = response['rating_score'] < 0 || response['rating_score'] > 100 ? 99 : response['rating_score']
+            if (response['rating_score'] > 99) {
+                temperature = 99
             }
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
             let is_active = response['is_active']
@@ -132,7 +131,7 @@ function userInfo() {
                 <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">판매상품 보기</button>
                 </div>
             `
-            let temperature_good_user=`
+            let temperature_good_user = `
                         <div style="width:30vw">
                         <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                         <div style="color : black;">
@@ -144,7 +143,7 @@ function userInfo() {
                         <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">판매상품 보기</button>
                         </div>
                     `
-            let myProfileBtn=`
+            let myProfileBtn = `
             <button style="margin:5px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
             `
             if (is_active == true && temperature > 0) {
@@ -155,7 +154,7 @@ function userInfo() {
                 $('#bad_user').append(bad_user)
                 $('#temp').append(temperature_bad_user)
             }
-            if (payload["user_id"]==`${id}`){
+            if (payload["user_id"] == `${id}`) {
                 $('#goods_list_btn').hide()
                 $('#profile_btn').append(myProfileBtn)
             }

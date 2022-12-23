@@ -57,7 +57,7 @@ function selectScore(score_1) {
         $('#excellent').attr('style', "background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;")
         $('#check_list').empty()
         $('#check_list').append(temp_bad)
-        console.log("최악")
+        // console.log("최악")
 
     } else if (score == 0) {
         let temp_soso = `
@@ -111,7 +111,7 @@ function selectScore(score_1) {
         $('#excellent').attr('style', "background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;")
         $('#check_list').empty()
         $('#check_list').append(temp_soso)
-        console.log("그저 그래요")
+        // console.log("그저 그래요")
     } else if (score == 3) {
         let temp_good = `
        <div class="col-lg-6" style="text-align: center; background-color: #fffef7; ">
@@ -164,7 +164,7 @@ function selectScore(score_1) {
         $('#excellent').attr('style', "background-color: fffef7; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;")
         $('#check_list').empty()
         $('#check_list').append(temp_good)
-        console.log("좋아요")
+        // console.log("좋아요")
     } else if (score == 5) {
         let temp_good = `
     <div class="col-lg-6" style="text-align: center; background-color: #fffef7; ">
@@ -217,7 +217,7 @@ function selectScore(score_1) {
         $('#excellent').attr('style', "background-color: #8088ff; height: 180px; width: 180px; border-radius: 10px; cursor : pointer;")
         $('#check_list').empty()
         $('#check_list').append(temp_good)
-        console.log("최고에요")
+        // console.log("최고에요")
 
     }
 
@@ -230,7 +230,7 @@ function selectScore(score_1) {
 // function reviewCreate(){
 //     $("input[type=checkbox]:checked").each(function(){
 //         const value = $(this).val();
-//         console.log(value);
+//         // console.log(value);
 //     })
 // }
 let goods_id = url.searchParams.get('goods_id')
@@ -262,7 +262,7 @@ function reviewCreate() {
             window.location.href = `/chat/index.html?good_id=${goods_id}`
         },
         error: function (response) {
-            console.log(response)
+            // console.log(response)
             if (score === undefined) {
                 alert("상대방과 거래가 어땠는지 선택해주세요");
             } else if (content === '') {

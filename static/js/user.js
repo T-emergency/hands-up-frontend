@@ -13,11 +13,11 @@ async function handleLogin() {
             "password": password
         })
     })
-    // console.log(response.json())
+    // // console.log(response.json())
     if (response.status === 200) {
         const response_json = await response.json()
 
-        console.log(response_json["access"])
+        // console.log(response_json["access"])
 
         localStorage.setItem('access', response_json.access)
         localStorage.setItem('refresh', response_json.refresh)
@@ -35,7 +35,7 @@ async function handleLogin() {
 
         window.location.href = "/index.html"
 
-    } else if (response.status === 401){
+    } else if (response.status === 401) {
         alert('번호 혹은 비밀번호를 확인해 주세요.')
     }
 }

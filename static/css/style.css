@@ -239,6 +239,20 @@ ol {
   background: #7fad39;
   border: none;
 }
+/* alram section */
+
+#alram-section{
+  position: fixed;
+  left: 10%;
+  bottom: 50px;
+  width: 300px;
+  max-height: 200px;
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
+  z-index: 9999;
+}
+
+
 
 /* Preloder */
 

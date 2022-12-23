@@ -1,9 +1,9 @@
-// // 서버용
+// 서버용
 // const hostUrl = "http://backend.hands-up.co.kr"
 // const backUrl = '43.200.179.49';
-// const domain = '43.200.179.49'
+// const domain = '43.200.179.49';
 
-// 로컬용
+// // 로컬용
 const hostUrl = "http://127.0.0.1:8000"
 const backUrl = '127.0.0.1:8000';
 const domain = '127.0.0.1:8000';
@@ -27,8 +27,6 @@ const CATEGORY = {
     '기타': 'etc',
     '이벤트': 'event',
 }
-
-
 function searchAuction() {
     var keyword = document.getElementById('search-input').value;
     window.location.href = `/goods/index.html?search=${keyword}`
@@ -137,9 +135,63 @@ function dp_menu() {
 }
 
 if (token !== null && payload !== null) {
-    var chatSocket = new WebSocket(
+    var alramSocket = new WebSocket(
         `ws://${domain}/ws/alram/${payload['user_id']}/?token=${token}`
     );
+    alramSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+    alramSocket.onmessage = function (e) {
+        let data = JSON.parse(e.data);
+        let message = data['message'];
+        let responseType = data['response_type']
+        let goodsId = data['goods_id']
+
+        if(responseType === 'chat_alram'){
+            let sender = data['sender_name']
+            let senderId = data['sender']
+            let chatList = document.getElementById(`chat-list-${goodsId}`)
+            if(chatList){
+                $("#chat-list").prepend(chatList)
+                $(`#chat-list-title-${goodsId}`).text(message)
+                var wp = document.getElementById(`wait-msg-${goodsId}`)
+            }
+            if(payload['user_id'] !== senderId){
+                if(wp){
+                    var cnt = Number($(`#wait-msg-${goodsId}`).text())+1
+                    console.log(cnt)
+                    $(`#wait-msg-${goodsId}`).text(cnt)
+                }else{
+                    $(`#wait-point-${goodsId}`).html(`
+                    <span
+                        style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit; position: absolute; right: 5px; top: 5px;"
+                        id="wait-msg-${goodsId}">
+                        1
+                    </span>
+                    `)
+                }
+                $('#alram-section').append(`
+                    <div class="mb-2" style="border-radius:10px; width:100%; background-color:green; padding:5px;">
+                        <div style="color:white;">
+                            ${sender}님의 메시지
+                        </div>
+                        <div style="padding-left:15px; color:white;">
+                            ${message}
+                        </div>
+                    </div>
+                `)
+            }
+
+        }
+
+    };
+}
+function alramClear(){
+    $('#alram-section').html(`<div id="alram-clear" style="position: absolute; right: 0;">
+    <button style="background-color: #000; color:white;border: 1px solid black; border-radius: 4px; padding: 3px;" onclick="alramClear()">
+        <b>All Clear</b>
+    </button>
+    </div>`)
 }
 
 document.getElementById('nav-header').innerHTML = `

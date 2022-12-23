@@ -22,7 +22,7 @@ function free_article_detail(){
             let hits = response['hits']
             let user = response['username']
             let img=response['image']
-            console.log(response)
+            // console.log(response)
             $('#title').append(title)
             $('#hits').append(hits)
             $('#user').append(user)
@@ -231,8 +231,8 @@ function comment_put_submit(free_comment_id){
             let content = $("#comment_content2").val()
             let formData = new FormData();
             formData.append("content",content);
-            console.log("content",content)
-            console.log(formData)
+            // console.log("content",content)
+            // console.log(formData)
 
             $.ajax({
                 

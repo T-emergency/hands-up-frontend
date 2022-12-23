@@ -154,7 +154,7 @@ async function goodsStatusView(data) {
         if (data['buyer'] !== null) {
             let buyer = data['buyer']
 
-            console.log(data)
+            // console.log(data)
             //사진으로 해야하는지 의문
             document.getElementById('high-price').innerHTML = `
             <div class="p-3 text-center mb-3">
@@ -176,7 +176,7 @@ async function goodsStatusView(data) {
             </div>
             `
         } else {
-            console.log(data)
+            // console.log(data)
 
             document.getElementById('high-price').innerHTML = `
             <div class="p-3 text-center card mb-3" style="box-shadow: 0 2px 5px 0px;">
@@ -249,7 +249,7 @@ if (token !== null) {
 
 
 chatSocket.onopen = (e) => {
-    console.log('connect')
+    // console.log('connect')
 }
 
 chatSocket.onmessage = async function (e) {
@@ -398,9 +398,9 @@ function sendMessage() {
         window.location.href = '/user/login.html'
         return
     }
-    // console.log(goods, payload)
+    // // console.log(goods, payload)
     if (chatSocket.readyState === WebSocket.OPEN) {
-        console.log('opened')
+        // console.log('opened')
         chatSocket.send(JSON.stringify({
             'is_money': false,
             'goods_id': goodsId,

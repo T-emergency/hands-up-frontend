@@ -1,5 +1,6 @@
-var data_auction_list = get_auction_list()
 var user_id = url.searchParams.get('user_id')
+var data_auction_list = get_auction_list()
+
 
 
 userInfo()
@@ -17,13 +18,12 @@ function userInfo() {
         url: `${hostUrl}/user/info/${user_id}/`,
 
         success: function (response) {
-            console.log('성공:', response);
+            // console.log('성공:', response);
             let profile_image = response['profile_image']
             let username = response['username']
-            temperature= response['rating_score']<0 || response['rating_score']>100? 99 : response['rating_score']
-            if(response['rating_score'] > 99)
-            {
-            temperature=99
+            temperature = response['rating_score'] < 0 || response['rating_score'] > 100 ? 99 : response['rating_score']
+            if (response['rating_score'] > 99) {
+                temperature = 99
             }
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
             let is_active = response['is_active']
@@ -48,7 +48,7 @@ function userInfo() {
                 <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                 </div>
             `
-            let temperature_good_user=`
+            let temperature_good_user = `
                         <div style="width:30vw">
                         <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                         <div style="color : white;">
@@ -86,11 +86,11 @@ const option = {
     rootMargin: "0px 0px 0px 0px",
     thredhold: 0,
 }
-const onIntersect = (entries, observer) => { 
-    console.log(entries, observer)
+const onIntersect = (entries, observer) => {
+    // console.log(entries, observer)
     // entries는 IntersectionObserverEntry 객체의 리스트로 배열 형식을 반환합니다.
     entries.forEach(entry => {
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
             get_auction_list()
         }
     });
@@ -106,7 +106,7 @@ var category = ''
 var goodsStatus = ''
 var isNull = ''
 var search = url.searchParams.get('search')
-var search = search === null || search === undefined? search ='': search = search
+var search = search === null || search === undefined ? search = '' : search = search
 
 
 function get_auction_list() {
@@ -119,11 +119,11 @@ function get_auction_list() {
         data: {},
         async: false,
         success: function (response) {
-            console.log(`${hostUrl}/goods/user/1/?page=${nowPage}&status=${goodsStatus}`)
+            // console.log(`${hostUrl}/goods/user/${user_id}/?page=${nowPage}&status=${goodsStatus}`)
             let auction_list = response
             for (let i = 0; i < auction_list.length; i++) {
 
-                let price 
+                let price
                 let banner
                 let high_price
                 let participants
@@ -132,7 +132,7 @@ function get_auction_list() {
                 let is_like = auction_list[i]['is_like']
                 let auction_status = auction_list[i]['status']
                 let image = auction_list[i]['images']?.image
-                let time = auction_list[i]['start_time'].slice(0,2) + '시' + ' ' +  auction_list[i]['start_time'].slice(3,)+'분'
+                let time = auction_list[i]['start_time'].slice(0, 2) + '시' + ' ' + auction_list[i]['start_time'].slice(3,) + '분'
                 let startTime = auction_list[i]['start_date'].split('-').slice(1,).join('/') + ' ' + time + ' 오픈!'
 
                 var now = new Date();
@@ -140,7 +140,7 @@ function get_auction_list() {
 
                 open.setMinutes(open.getMinutes() + 20);
                 let rt = open - now
-                rt = parseInt(rt/(1000*60))
+                rt = parseInt(rt / (1000 * 60))
 
                 if (auction_status == null) {
                     auction_status = "wait-auction";
@@ -156,10 +156,10 @@ function get_auction_list() {
                         </span>
                     </div>
                     `
-                    
+
                 } else if (auction_status == true) {
                     auction_status = "started-auction";
-                    high_price = auction_list[i]["high_price"] === 0? auction_list[i]['start_price'] +'원': auction_list[i]["high_price"] + '원';
+                    high_price = auction_list[i]["high_price"] === 0 ? auction_list[i]['start_price'] + '원' : auction_list[i]["high_price"] + '원';
                     banner = `<span style="padding : 4px; border-radius:10px;background-color:#ffd700; color:black;">경매 ${rt}분 남았어요!<span>`
                     participants = `
                     <div style="background-color:black; border-radius : 10px; padding:3px;">
@@ -171,7 +171,7 @@ function get_auction_list() {
                     </div>
                         
                     `
-                    
+
                     price = `
                     <div>
                         <span style="font-size : 19px; font-weight:700;">
@@ -184,7 +184,7 @@ function get_auction_list() {
                     `
                 } else {
                     auction_status = "end-auction";
-                    high_price = auction_list[i]["high_price"] === 0? '미낙찰' : auction_list[i]["high_price"] + '원';
+                    high_price = auction_list[i]["high_price"] === 0 ? '미낙찰' : auction_list[i]["high_price"] + '원';
                     banner = `<span style="padding : 4px; border-radius:10px;background-color:gray; color:white;">경매종료<span>`
                     participants = ``
                     price = `
@@ -197,16 +197,16 @@ function get_auction_list() {
                         </span>
                     </h5>
                     `
-                    
+
                 };
-                if(is_like){
-                    heart= `
+                if (is_like) {
+                    heart = `
                     <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
                         <i id="heart-${goods_id}" class="fas fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                     </div>
                     `
-                }else{
-                    heart=`
+                } else {
+                    heart = `
                     <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
                         <i id="heart-${goods_id}" class="far fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                     </div>
@@ -241,7 +241,7 @@ function get_auction_list() {
             }
             nowPage += 1
         },
-        error : function(error){
+        error: function (error) {
             var temp = `
             <div class="text-center">
                 <span style="font-size:25px; color:white;">회원님의 경매는 이게 전부에요 &#128517;</span>
@@ -255,26 +255,26 @@ function get_auction_list() {
 }
 
 
-function filter(c='', gs='', sr=''){
+function filter(c = '', gs = '', sr = '') {
     var prevCategory = CATEGORY[category]
     var prevStatus = goodsStatus
     // var nowStatus = 
-    if(sr !== ''){
+    if (sr !== '') {
         nowPage = 1
         search = sr
         category = '';
         gs = '';
         $('#auction_list').empty()
-    }else if (c !== ''){
+    } else if (c !== '') {
         nowPage = 1;
-        c!== 'all' ? category=c : category=''
+        c !== 'all' ? category = c : category = ''
         search = '';
         $('#auction_list').empty()
         $(`#ct-${prevCategory}`).removeClass('active')
         $(`#ct-${CATEGORY[c]}`).addClass('active')
-    }else if (gs !== ''){
+    } else if (gs !== '') {
         nowPage = 1
-        gs !=='all'?goodsStatus = gs: goodsStatus=''
+        gs !== 'all' ? goodsStatus = gs : goodsStatus = ''
         $('#auction_list').empty()
         $(`#st-${prevStatus}`).removeClass('active')
         $(`#st-${goodsStatus}`).addClass('active')
@@ -329,9 +329,9 @@ async function remaindTime() {
             $(`.time-${id}`).fadeIn();
             // $(`p.time-title-${id}`).html("경매 남은 시간");
             sec = parseInt(et - nt)
-            console.log("sec:", sec)
+            // console.log("sec:", sec)
             sec = parseInt(et - nt) / 1000;
-            console.log("sec:", sec)
+            // console.log("sec:", sec)
             day = parseInt(sec / 60 / 60 / 24);
             sec = (sec - (day * 60 * 60 * 24));
 
