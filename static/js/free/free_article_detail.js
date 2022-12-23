@@ -12,48 +12,56 @@ let login_user_id = JSON.parse(localStorage.getItem('payload')).user_id
 
 function free_article_detail(){
 
-        $.ajax({
-            type: "GET",
-            url: `${hostUrl}/board/detail/${free_article_id}/`,
-            data: {},
-            success: function(response){
-            let title = response['title']
-            let content = response['content']
-            let hits = response['hits']
-            let user = response['username']
-            let img=response['image']
-            console.log(response)
-            $('#title').append(title)
-            $('#hits').append(hits)
-            $('#user').append(user)
-            $('#content').append(content)
-            
-            if(img){
-              $('#image').append(`<img src="${hostUrl}${img}" style="width: 100%; ">`)
-            }
+    $.ajax({
+        type: "GET",
+        url: `${hostUrl}/board/detail/${free_article_id}/`,
+        data: {},
+        success: function(response){
+        let title = response['title']
+        let content = response['content']
+        let hits = response['hits']
+        let user = response['username']
+        let img=response['image']
 
-            // hide_button();
-            // hide_comment_page();
-            // function hide_button(){
-            //     if(free_article_id!=login_user_id){
-            //         $("#put_submit").hide();
-            //         $("#delete_submit").hide();
-            //     }
-            //   }
-            // function hide_comment_page(){
-            //     if(comments_count<5){
-            //         $("#previous").hide();
-            //         $("#next").hide();
-            //     }
-            //   }
-
-
-        }
-            })
+        var a = JSON.parse(localStorage.getItem('payload', ''))
+       
+        $('#title').append(title)
+        $('#hits').append(hits)
+        $('#user').append(user)
+        $('#content').append(content)
+        
+        if(img){
+          $('#image').append(`<img src="${hostUrl}${img}" style="width: 100%; ">`)
         }
         
+        if (user != a['username']){
+
+          const put_submit = document.getElementById('put_submit');
+          const delete_submit = document.getElementById('delete_submit');
+
+          put_submit.remove();
+          delete_submit.remove();
+          
+        } 
+        // hide_button();
+        // hide_comment_page();
+        // function hide_button(){
+        //     if(free_article_id!=login_user_id){
+        //         $("#put_submit").hide();
+        //         $("#delete_submit").hide();
+        //     }
+        //   }
+        // function hide_comment_page(){
+        //     if(comments_count<5){
+        //         $("#previous").hide();
+        //         $("#next").hide();
+        //     }
+        //   }
 
 
+        }
+    })
+}
 
 $(document).ready(function () {
     comment()
@@ -231,8 +239,6 @@ function comment_put_submit(free_comment_id){
             let content = $("#comment_content2").val()
             let formData = new FormData();
             formData.append("content",content);
-            console.log("content",content)
-            console.log(formData)
 
             $.ajax({
                 
