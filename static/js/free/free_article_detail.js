@@ -133,7 +133,7 @@ function page(page) {
   
             temp_html=
             `
-            <li class="list-group-item d-flex justify-content-between align-items-start" style="margin-top:10px; background-color: #a7f77b">
+            <li class="list-group-item d-flex justify-content-between align-items-start" style="margin-top:10px; background-color: #85f2ad;">
               <div class="ms-2 me-auto" style="width:65%;">
                 <div class="fw-bold">${user}</div>
                   ${content}
