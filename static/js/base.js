@@ -78,15 +78,37 @@ function moveChat() {
     return window.location.href = `/chat/index.html?user_id=${payload['user_id']}`
 }
 
+// if (!payload) {
+//     var login_temp = `
+//         <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
+//     `
+// } else {
+//     var login_temp = `
+//         <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
+//     `
+// }
 
-if (!payload) {
-    var login_temp = `
-        <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
-    `
-} else {
-    var login_temp = `
-        <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
-    `
+function loginTemp(payload) {
+    let login_temp = ''
+    if (!payload) {
+        login_temp = `
+            <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
+        `
+    } else {
+        login_temp = `
+            <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
+        `
+    }
+    return login_temp
+}
+function logoutTemp(payload) {
+    let login_temp = ''
+    if (payload) {
+        login_temp = `
+        <span style="cursor:pointer" onclick="handleLogout()">로그아웃</span>
+        `
+    }
+    return login_temp
 }
 
 async function handleLogout() {
@@ -127,21 +149,21 @@ if (token !== null && payload !== null) {
         let responseType = data['response_type']
         let goodsId = data['goods_id']
 
-        if(responseType === 'chat_alram'){
+        if (responseType === 'chat_alram') {
             let sender = data['sender_name']
             let senderId = data['sender']
             let chatList = document.getElementById(`chat-list-${goodsId}`)
-            if(chatList){
+            if (chatList) {
                 $("#chat-list").prepend(chatList)
                 $(`#chat-list-title-${goodsId}`).text(message)
                 var wp = document.getElementById(`wait-msg-${goodsId}`)
             }
-            if(payload['user_id'] !== senderId){
-                if(wp){
-                    var cnt = Number($(`#wait-msg-${goodsId}`).text())+1
+            if (payload['user_id'] !== senderId) {
+                if (wp) {
+                    var cnt = Number($(`#wait-msg-${goodsId}`).text()) + 1
                     console.log(cnt)
                     $(`#wait-msg-${goodsId}`).text(cnt)
-                }else{
+                } else {
                     $(`#wait-point-${goodsId}`).html(`
                     <span
                         style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit; position: absolute; right: 5px; top: 5px;"
@@ -166,7 +188,7 @@ if (token !== null && payload !== null) {
 
     };
 }
-function alramClear(){
+function alramClear() {
     $('#alram-section').html(`<div id="alram-clear" style="position: absolute; right: 0;">
     <button style="background-color: #000; color:white;border: 1px solid black; border-radius: 4px; padding: 3px;" onclick="alramClear()">
         <b>All Clear</b>
@@ -174,15 +196,53 @@ function alramClear(){
     </div>`)
 }
 
+function isLoginNavIcon(payload) {
+    let temp_html = ''
+    if (payload) {
+        temp_html = `
+        <ul>
+            <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
+            
+            <li style='cursor:pointer;' onclick="dp_menu()" ><i class="fa fa-user"></i></li>
+                <ul class="header__menu__dropdown" 
+                style="display:none; 
+                position: absolute;
+                z-index: 1;"
+                
+                id="dr_menu">
+                    <li onclick='moveProfile()'><a style="color:black; font-size:15px;" href="#">프로필</a></li>
+                    <li onclick="handleLogout()"><a style="color:black;font-size:15px; " href="#">로그아웃</a></li>
+                </ul> 
+
+            <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
+            </li>
+            
+            <li style='cursor:pointer;' onclick='moveChat()'>
+                <i class="fas fa-comment-dots"></i>
+            </li>
+        </ul>
+        `
+    } else {
+        temp_html = `
+        <ul>
+            <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
+            <li style='cursor:pointer;' onclick="location.href='/user/login.html'" ><i class="fa fa-user"></i></li>
+        </ul>
+        `
+    }
+    return temp_html
+}
+
+
 document.getElementById('nav-header').innerHTML = `
 <div class="humberger__menu__overlay" style="z-index: 995;"></div>
     <div class="humberger__menu__wrapper" style="z-index: 999;">
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                ${login_temp}
+                ${loginTemp(payload)}
             </div>
             <br>
-            <div><span style="cursor:pointer" onclick="handleLogout()">로그아웃</span></div>
+            <div>${logoutTemp(payload)}</div>
         </div>
         
         <div id="mobile-menu-wrap">
@@ -200,6 +260,7 @@ document.getElementById('nav-header').innerHTML = `
                                 </ul>
                             </li> -->
                         <li><a href="/board/free_article.html">게시판</a></li>
+                        ${showChatRoom(payload)}
                         <li><a href="https://forms.gle/2iNG5v4vcmAqrC8o9">Contact & Feedback</a></li>
                         <li class="p-2">
                             <input type="text" class="form-control mb-1" placeholder="What do yo u need?" id="search-input-2">
@@ -239,10 +300,18 @@ document.getElementById('nav-header').innerHTML = `
         <div class="container">
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="header__logo" >
-                        <h1 onclick="window.location.href='/'" style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px; cursor:pointer;">
+                    <div class="header__logo" style="display: flex;" >
+                        <h1 onclick="window.location.href='/'" style="font-size: 27px; font-weight: 800;color: white; padding-top: 10px; cursor:pointer;">
                             👋 핸즈업
                         </h1>
+                        <div id="mobile_size" style="display:none;">
+                            <div style="display: flex; margin:5px 5px 5px 15px; width:100%;">
+                                <input type="text" class="form-control" placeholder="What do yo u need?" id="search-input">
+                                <li style="margin: 0;" class="btn btn-primary" onclick="searchAuction()">
+                                    <i class="fas fa-search"></i>
+                                </li>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-8" style="padding: 0;">
@@ -268,29 +337,8 @@ document.getElementById('nav-header').innerHTML = `
                     </nav>
                 </div>
                 <div class="col-lg-2">
-
                     <div class="header__cart">
-                        <ul>
-                            <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
-                            
-                                <li style='cursor:pointer;' onclick="dp_menu()" ><i class="fa fa-user"></i></li>
-                                    <ul class="header__menu__dropdown" 
-                                    style="display:none; 
-                                    position: absolute;
-                                    z-index: 1;"
-                                    
-                                    id="dr_menu">
-                                        <li onclick='moveProfile()'><a style="color:black; font-size:15px;" href="#">프로필</a></li>
-                                        <li onclick="handleLogout()"><a style="color:black;font-size:15px; " href="#">로그아웃</a></li>
-                                    </ul> 
-
-                                <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
-                                </li>
-                            
-                            <li style='cursor:pointer;' onclick='moveChat()'>
-                                <i class="fas fa-comment-dots"></i>
-                            </li>
-                        </ul>
+                        ${isLoginNavIcon(payload)}
                     </div>
                 </div>
             </div>
@@ -313,3 +361,34 @@ document.querySelector('#search-input-2').onkeyup = function (e) {
         searchAuction2(false)
     }
 };
+
+
+
+
+window.onresize = function (event) {
+    if ($('.header__menu').css("display") == 'none') {
+        $('#mobile_size').css("display", 'block')
+        $('.header__cart').css("display", 'none')
+    } else {
+        $('#mobile_size').css("display", 'none')
+        $('.header__cart').css("display", 'inline-block')
+    }
+
+}
+
+$(function () {
+    if ($('.header__menu').css("display") == 'none') {
+        $('#mobile_size').css("display", 'block')
+        $('.header__cart').css("display", 'none')
+    }
+});
+
+function showChatRoom(payload) {
+    let temp_html = ''
+    if (payload) {
+        temp_html = `
+        <li><a href="javascript:moveChat()">1:1 채팅</a></li>
+        `
+    }
+    return temp_html
+}

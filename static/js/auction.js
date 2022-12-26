@@ -202,12 +202,14 @@ async function goodsStatusView(data) {
 
     } else { // 시작 전 타이머는 20분 세팅하고 가림막 보이게 하기 아직 시작 전이라 알리기
         $('#auction-wrap').empty()
+        console.log(data)
         var temp = `
         <div id="auction-before-message" class = "text-center">
             <div style="font-size: 20px;" font-weight: 600;>경매 시작 시간</div>
             <div style="font-size : 25px; font-weight:600;">${data['start_date']} ${data['start_time']}:00</div>
             <div  style='padding:15px 44% 0; color:white; font-size: 25px; font-weight : 500;'>오너 될 준비, 되셨나요 ??</div>
         </div>
+        ${showDeleteButton(payload, data)}
         `
         $('#auction-wrap').html(temp)
     }
@@ -458,3 +460,35 @@ function sendMoney() {
 
     messageInputDom.value = '';
 };
+
+function showDeleteButton(payload, data) {
+    let temp_html = ''
+    if (payload["user_id"] == data["seller"]["id"]) {
+        temp_html = `
+            <div style="display: flex; justify-content: center;">
+                <button class="btn btn-primary" onclick="goodsDelete(${data["id"]})">삭제하기</button>
+            </div>
+        `
+    }
+    return temp_html
+}
+
+function goodsDelete(goods_id) {
+    if (confirm('정말로 삭제하시겠습니까?') == false) {
+        return
+    }
+    $.ajax({
+        type: "DELETE",
+        url: `${hostUrl}/goods/${goodsId}`,
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+            console.log(response)
+            alert('상품이 삭제되었습니다.')
+            window.location.href = '/goods/index.html'
+        }
+    });
+
+}
