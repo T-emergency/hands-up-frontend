@@ -118,7 +118,7 @@
             max-height: 650px;
             border-radius: 15px;
             /* background: radial-gradient(#c692ff, #fde55d); */
-            background: radial-gradient(#c692ff, #222d73);
+            /* background: radial-gradient(#c692ff, #222d73); */
             box-shadow: 0 4px 8px 1px;
             padding: 15px;
         }
@@ -149,16 +149,42 @@
 </head>
 
 <body style="
-        background-color: #201e0c;
+        background-color: #fffbf396;
     " class="">
     <!-- Page Preloder -->
     <div id="preloder" style="display: none;">
         <div class="loader" style="display: none;"></div>
     </div>
     <div id="nav-header"></div>
-
-
+    <div id="alram-section">
+        <div id="alram-clear" style="position: absolute; right: 0;">
+            <button style="background-color: rgb(217, 217, 217); color:rgb(0, 0, 0); border: 1px solid black; border-radius: 4px; padding: 3px;" onclick="alramClear()">
+                <b>All Clear</b>
+            </button>
+        </div>
+    </div>
+    
     <div class="whole-wrap container " style="margin : 0 auto; padding-top: 20px;">
+        <div class="row mb-3">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 text-center p-3">
+                <div  style="height: 150px; overflow-x: hidden; overflow-y: scroll; border-radius: 10px; border: 2px solid black; background-color: white;">
+                    <span class="mb-2" style="font-size: 20px; border-bottom: 2px solid black;">입찰내역</span> 
+                    <div id="bid-list"></div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center p-3">
+                <div style="height: 150px; overflow-x: hidden; overflow-y: scroll; border-radius: 10px; border: 2px solid black; background-color: white;">
+                    <span style="font-size: 20px;">참여자</span>
+                    <div class="row p-0 text-center" id="participant-list"></div>
+            
+                </div>
+            </div>
+            
+        </div>
+        
         <div class="row">
             <div class="col-lg-5" style="padding: 0 10px;">
                 <div>
@@ -215,6 +241,9 @@
                 <div class="p-3"
                     style="height : 600px;overflow-y: overlay; background-color: white; border-radius: 5px;"
                     id="chat-wrap">
+                    <div class="text-center" id="endChatList" style="height: 40px; font-size: 20px;">
+                        더 이상의 메시지는 없습니닷
+                    </div>
                     <div class="" id="chat-log">
                         <div id="chat" class="" style="resize: none;">
                         </div>

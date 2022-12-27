@@ -56,9 +56,9 @@ function needLogin() {
 
 
 function moveAuction() {
-    if (!payload) {
-        needLogin()
-    }
+    // if (!payload) {
+    //     needLogin()
+    // }
     return window.location.href = `/goods/index.html`
 }
 
@@ -116,8 +116,9 @@ function dp_menu() {
 
 if (token !== null && payload !== null) {
     var alramSocket = new WebSocket(
-        `ws://${domain}/ws/alram/${payload['user_id']}/?token=${token}`
+        `ws://${domain}/ws/alram/?token=${token}`
     );
+    console.log('asdf')
     alramSocket.onclose = function (e) {
         console.error('Chat socket closed unexpectedly');
     };
@@ -126,6 +127,10 @@ if (token !== null && payload !== null) {
         let message = data['message'];
         let responseType = data['response_type']
         let goodsId = data['goods_id']
+        if (responseType === 'alert') {
+            alert(data['message'])
+            return
+        }
 
         if(responseType === 'chat_alram'){
             let sender = data['sender_name']
@@ -163,7 +168,24 @@ if (token !== null && payload !== null) {
             }
 
         }
+        if(responseType === 'alram'){
 
+            let message = data['message']
+            let goodsId = data['goods_id']
+            let goodsTitle = data['goods_title']
+            $('#alram-section').append(`
+                    <div class="mb-2" style="border-radius:10px; width:100%; background-color: black; padding:5px;">
+                        <div style="color:white;">
+                            ${message}
+                        </div>
+                        <div style="padding-left:15px; color:white;">
+                            <a href="/goods/auction.html?goods=${goodsId}">
+                                ${goodsTitle}
+                            </a>
+                        </div>
+                    </div>
+                `)
+        }
     };
 }
 function alramClear(){

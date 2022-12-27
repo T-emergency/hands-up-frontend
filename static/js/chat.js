@@ -14,7 +14,6 @@ function roomListApi(){
             "Authorization": "Bearer " + token,
         },
         success: function (response) {
-            console.log(response)
             roomList(response)
         }
     })

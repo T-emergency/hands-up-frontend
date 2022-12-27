@@ -1,7 +1,7 @@
-let data_auction_list
-$(document).ready(function () {
-    data_auction_list = get_auction_list()
-});
+// let data_auction_list
+// $(document).ready(function () {
+    // data_auction_list = get_auction_list()
+// });
 
 
 const listEnd = document.getElementById('endList');
@@ -40,13 +40,12 @@ if (!category) {
 }
 
 function get_auction_list() {
+    headers = token ? {"Authorization": "Bearer " + token,} : {}
     let temp_response
     $.ajax({
         type: "GET",
         url: `${hostUrl}/goods/?page=${nowPage}&category=${category}&status=${goodsStatus}&search=${search}`,
-        headers: {
-            "Authorization": "Bearer " + token,
-        },
+        headers: headers,
         data: {},
         async: false,
         success: function (response) {

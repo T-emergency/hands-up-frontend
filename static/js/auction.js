@@ -9,8 +9,63 @@ if (Object.keys(goods).length > 9) {
     goods = {}
 }
 
+
+const listEnd = document.getElementById('endChatList');
+const option = {
+    root: null,
+    rootMargin: "0px 0px 0px 0px",
+    thredhold: 0,
+}
+const onIntersect = (entries, observer) => {
+    // console.log(entries, observer)
+    // entries는 IntersectionObserverEntry 객체의 리스트로 배열 형식을 반환합니다.
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            goodsChatApi()
+        }
+    });
+};
+
+const observer = new IntersectionObserver(onIntersect, option);
+observer.observe(listEnd);
+// goodsChatApi()
+var nowPage = 1
+async function goodsChatApi(){
+    const response = await fetch(`${hostUrl}/goods/${goodsId}/chat/?page=${nowPage}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': 'Bearer ' + token,
+        }
+    })
+    console.log(`${hostUrl}/goods/${goodsId}/chat/?page=${nowPage}`)
+    nowPage++
+    data = await response.json()
+    for(var i=0; i < data.length; i++){
+
+        var temp = `
+                <div>
+                    <div>
+                        <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
+                        <b style = "font-size : 20px">${data[i]['author']}</b> <span style="font-color : gray; font-size:small;">${data[i]['created_at']}</span>
+                    </div>
+                    <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px; word-break: break-all;">
+                        ${data[i]['content']}
+                    </div>
+                </div>
+            `
+            // beforeend afterbegin beforebegin afterend
+        document.querySelector('#chat').insertAdjacentHTML('afterend', temp)
+    }
+    if(response.status !== 404){
+        var element = document.getElementById('chat-wrap');
+        element.scrollTop =  55*15;
+    }
+}
+
 async function goodsInfoView() {
     let data = await goodsInfoApi()
+    await goodsStatusView(data)
     let seller = data['seller']
     var hp = priceToString(data['high_price'])
     var sp = priceToString(data['start_price'])
@@ -27,7 +82,7 @@ async function goodsInfoView() {
     for (var i = 0; i < data['images'].length; i++) {
         temp += `
         <div class="swiper-slide">
-            <img style="box-shadow: 0 2px 5px 0px; border-radius:10px" src="${hostUrl}${data['images'][i]['image']}" alt="상품이미지"/>
+            <img style="height:300px;box-shadow: 0 2px 5px 0px; border-radius:10px" src="${hostUrl}${data['images'][i]['image']}" alt="상품이미지"/>
         </div>
     `
     }
@@ -102,7 +157,34 @@ async function goodsInfoView() {
     document.getElementById('goods-info-wrap').innerHTML = temp
     $("time.timeago").timeago();
 
-    await goodsStatusView(data)
+    // 입찰 내역 섹션
+    var bids = data['bids']
+    for(var i=0; i<bids.length; i++){
+        var temp = `
+            <div class="row mb-2 p-1" style="background-color:white; border-bottom: 1px solid black;">
+                <div class="col-sm-6">
+                    ${bids[i]['user']}
+                </div>
+                <div class="col-sm-6">
+                    ${bids[i]['price']}
+                </div>
+            <div>
+        `
+        $('#bid-list').append(temp)
+    }
+
+    // 참여자 섹션
+    var participants = data['participants']
+    for(var i=0; i<participants.length; i++){
+        console.log(participants[i])
+        var temp = `
+            <div class="col-sm-6" id="participant-${participants[i]['id']}">
+                ${participants[i]['user']}
+            </div>
+        `
+        document.querySelector('#participant-list').insertAdjacentHTML('afterbegin', temp)
+    }
+
 
 
 }
@@ -259,11 +341,6 @@ chatSocket.onmessage = async function (e) {
     var element = document.getElementById('chat-wrap');
     var isEnd = element.scrollHeight <= element.scrollTop + element.clientHeight + 3;
 
-    if (responseType === 'alert') {
-        alert(data['message'])
-        return
-    }
-
     if (responseType === 'bid') {
         // var highPrice = data['high_price']
         // goods[goodsId]['high_price'] = highPrice
@@ -304,8 +381,19 @@ chatSocket.onmessage = async function (e) {
                 </div>
             </div>
         `
+        var temp2 = `
+            <div class="row mb-2 p-1" style="background-color:white; border-bottom: 1px solid black;">
+                <div class="col-sm-6">
+                    ${data['sender_name']}
+                </div>
+                <div class="col-sm-6">
+                    ${data['high_price']}
+                </div>
+            <div>
+        `
         // beforeend afterbegin beforebegin afterend
-        document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
+        document.querySelector('#chat-log').insertAdjacentHTML('beforeend', temp)
+        document.querySelector('#bid-list').insertAdjacentHTML('afterbegin', temp2)
 
     } else if (responseType === 'message') {
         var nowOner = goods[goodsId]['buyer_id']
@@ -349,22 +437,29 @@ chatSocket.onmessage = async function (e) {
         }
 
         // beforeend afterbegin beforebegin afterend
-        document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
+        document.querySelector('#chat-log').insertAdjacentHTML('beforeend', temp)
     } else if (responseType === 'enter') {
+        // var temp = `
+        //     <div>
+        //         <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
+        //             ${data['sender_name']}님이 입장하였습니다.
+        //         </div>
+        //     </div>
+        // `
         var temp = `
-            <div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
-                    ${data['sender_name']}님이 입장하였습니다.
-                </div>
+            <div class="col-sm-6" id="participant-${data['sender']}">
+                ${data['sender_name']}
             </div>
         `
-        document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
+        document.querySelector('#participant-list').insertAdjacentHTML('afterbegin', temp)
+        
         if (document.getElementById('participants-count') != null)
             document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
 
     } else if (responseType === 'out') {
         if (document.getElementById('participants-count') != null)
             document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
+            document.getElementById(`participant-${data['user_id']}`).remove()
     }
 
     // 하단 스크롤 고정
