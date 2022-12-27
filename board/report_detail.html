@@ -62,7 +62,7 @@
   <div id="nav-header"></div>
 
   <div class="w-100 h-100 p-3 mx-auto">
-    <main class="container" style="height: 900px; margin-top : 150px;">
+    <main class="container" style="height: 900px; margin-top : 50px;">
 
       <!-- 제목 -->
       <!-- <h2 class='contents' style="text-align :left; font-size: 45px; background-color: #fcc5c5; margin-top: 150px; " > </h1> -->
@@ -103,14 +103,6 @@
         <div id="test">
           <!-- 댓글 리스트 -->
           <div id="comment_list" style="margin-top: 30px;"></div>
-          <!-- 댓글 페이지네이션 -->
-          <nav aria-label="Page navigation example"
-            style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
-            <ul class="pagination">
-              <a type="button" onclick="" id="previous" class="page-link">이전</a>
-              <a type="button" onclick="" id="next" class="page-link">다음</a>
-            </ul>
-          </nav>
         </div>
 
         <!-- 댓글입력 -->
@@ -120,7 +112,15 @@
             rows="3" required></textarea>
           <div>
             <button type="button" class="btn btn-outline-success"
-              style="margin-left: 90%; margin-top: 20px; margin-bottom: 100px;" onclick="comment_submit()">등록하기</button>
+              style="margin-left: 90%; margin-top: 20px; margin-bottom: 0px;" onclick="comment_submit()">등록하기</button>
+        <!-- 댓글 페이지네이션 -->
+            <nav aria-label="Page navigation example"
+                  style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
+              <ul class="pagination">
+                  <a type="button" onclick="" id="previous" class="page-link">이전</a>
+                  <a type="button" onclick="" id="next" class="page-link">다음</a>
+              </ul>
+            </nav>
           </div>
         </form>
 
