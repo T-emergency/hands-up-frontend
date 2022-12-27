@@ -560,7 +560,7 @@ function showDeleteButton(payload, data) {
     if (payload["user_id"] == data["seller"]["id"]) {
         temp_html = `
             <div style="display: flex; justify-content: center;">
-                <button class="btn btn-primary" onclick="goodsDelete(${data["id"]})">삭제하기</button>
+                <button class="btn btn-danger" onclick="goodsDelete(${data["id"]})">삭제하기</button>
             </div>
         `
     }
