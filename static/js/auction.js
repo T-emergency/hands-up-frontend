@@ -38,7 +38,7 @@ async function goodsChatApi(){
             // 'Authorization': 'Bearer ' + token,
         }
     })
-    console.log(`${hostUrl}/goods/${goodsId}/chat/?page=${nowPage}`)
+
     nowPage++
     data = await response.json()
     for(var i=0; i < data.length; i++){
@@ -176,7 +176,7 @@ async function goodsInfoView() {
     // 참여자 섹션
     var participants = data['participants']
     for(var i=0; i<participants.length; i++){
-        console.log(participants[i])
+
         var temp = `
             <div class="col-sm-6" id="participant-${participants[i]['id']}">
                 ${participants[i]['user']}
@@ -290,6 +290,7 @@ async function goodsStatusView(data) {
             <div style="font-size : 25px; font-weight:600;">${data['start_date']} ${data['start_time']}:00</div>
             <div  style='padding:15px 44% 0; color:white; font-size: 25px; font-weight : 500;'>오너 될 준비, 되셨나요 ??</div>
         </div>
+        ${showDeleteButton(payload, data)}
         `
         $('#auction-wrap').html(temp)
     }
@@ -553,3 +554,34 @@ function sendMoney() {
 
     messageInputDom.value = '';
 };
+
+function showDeleteButton(payload, data) {
+    let temp_html = ''
+    if (payload["user_id"] == data["seller"]["id"]) {
+        temp_html = `
+            <div style="display: flex; justify-content: center;">
+                <button class="btn btn-primary" onclick="goodsDelete(${data["id"]})">삭제하기</button>
+            </div>
+        `
+    }
+    return temp_html
+}
+
+function goodsDelete(goods_id) {
+    if (confirm('정말로 삭제하시겠습니까?') == false) {
+        return
+    }
+    $.ajax({
+        type: "DELETE",
+        url: `${hostUrl}/goods/${goodsId}`,
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+            alert('상품이 삭제되었습니다.')
+            window.location.href = '/goods/index.html'
+        }
+    });
+
+}

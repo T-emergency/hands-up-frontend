@@ -4,7 +4,7 @@
 // select_chat_roome()
 roomListApi()
 
-function roomListApi(){
+function roomListApi() {
     $.ajax({
         type: "GET",
         // url: `${hostUrl}/chat/list/`,
@@ -19,11 +19,11 @@ function roomListApi(){
     })
 }
 
-function roomList(response){
+function roomList(response) {
     for (let i = 0; i < response.length; i++) {
         let buyer = response[i]['buyer']['username']
         let seller = response[i]['seller']['username']
-        let opposition_name = payload['username'] == buyer? seller: buyer
+        let opposition_name = payload['username'] == buyer ? seller : buyer
         let goods_id = response[i]["id"]
         let created_at = response[i]["created_at"]
         let title = response[i]['title']
@@ -33,9 +33,9 @@ function roomList(response){
         let auction_image = response[i]['image'] ? response[i]['image'] : '/media/default.jpeg'
         let buyer_profile_img = response[i]['buyer']['profile_image']
         let seller_profile_img = response[i]['seller']['profile_image']
-        let opposition_profile_img = payload['username'] == buyer? seller_profile_img: buyer_profile_img
+        let opposition_profile_img = payload['username'] == buyer ? seller_profile_img : buyer_profile_img
         let waitPoint
-        if(wait_cnt !== 0){
+        if (wait_cnt !== 0) {
             waitPoint = `
                 <span
                     style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit; position: absolute; right: 5px; top: 5px;"
@@ -43,7 +43,7 @@ function roomList(response){
                     ${wait_cnt}
                 </span>
             `
-        }else{
+        } else {
             waitPoint = ``
         }
         let temp_html = `
@@ -96,7 +96,7 @@ function get_chat_log(goods_id) {
                 let message = response[i]['content'];
                 let sender = response[i]['author']['username'];
                 let profile_image = response[i]['author']['profile_image'];
-                
+
                 let temp_html
                 if (sender == payload["username"]) {
                     temp_html = `
@@ -155,21 +155,21 @@ function review(goodsId) {
 
 let chatSocket
 let nowPage = 1
-function socketSwap(goods_id){
+function socketSwap(goods_id) {
 
-    if (chatSocket){
+    if (chatSocket) {
         chatSocket.close()
         $('#chatLog').empty()
         nowPage = 1
     }
 
     if (goods_id != null) {
-    // if (goods_id != null) {
+        // if (goods_id != null) {
         chatSocket = new WebSocket(
             'ws://' + backUrl +
             '/ws/chat/' + goods_id + '/?token=' + token);
 
-        console.log(chatSocket)
+        // console.log(chatSocket)
 
         chatSocket.onopen = function (e) {
             get_chat_log(goods_id)
@@ -178,12 +178,12 @@ function socketSwap(goods_id){
 
         chatSocket.onmessage = function (e) {
             let data = JSON.parse(e.data);
-            console.log(data)
+            // console.log(data)
             let message = data['message'];
             let sender = data['sender_name']
             let sender_image = data['sender_image']
-            if(data['response_type'] === 'goods_info'){
-                image = data['image']? data['image'] : '/media/default.jpeg'
+            if (data['response_type'] === 'goods_info') {
+                image = data['image'] ? data['image'] : '/media/default.jpeg'
                 $('#review-info').html(`
                     <div class="row">
                         <div class="col-8">
@@ -212,7 +212,7 @@ function socketSwap(goods_id){
                 temp_html = `
                 <div class="chat_message_wrap" style="align-items: flex-start;">
                     <div style="display: flex; flex-direction: row;">    
-                        <img src="/media/default.jpeg" style="width:30px; height:30;">
+                        <img src="${hostUrl}${image}" style="width:30px; height:30;">
                         <span style="margin-left: 5px; font-weight: bolder;">${sender}</span>
                     </div>
                     <div class="chat_message" style="background-color: #d6cdcd;">
@@ -229,7 +229,7 @@ function socketSwap(goods_id){
         };
 
         chatSocket.onclose = function (e) {
-            console.log(e)
+            // console.log(e)
             console.error('Chat socket closed unexpectedly');
         };
 
